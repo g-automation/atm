@@ -1,0 +1,17 @@
+{
+  "name": "atm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --kill-others \"npm run --prefix atm-api start\" \"npm run --prefix atm-app start\"",
+    "update": "concurrently --kill-others \"npm update && npm install\" \"npm run --prefix atm-api update\" \"npm run --prefix atm-app update\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
