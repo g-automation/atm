@@ -25,7 +25,7 @@ const Withdraw: React.FC = () => {
 
   return (
     <div className="Withdraw-container">
-      <h2>ATM Withdrawal</h2>
+      <h2>Withdrawal</h2>
       <input
         className="input"
         type="text"
@@ -40,9 +40,11 @@ const Withdraw: React.FC = () => {
         onChange={e => setAmount(parseInt(e.target.value))}
         placeholder="Enter amount"
       />
-      <button onClick={handleWithdraw}>Withdraw</button>
+      <button className="button" onClick={handleWithdraw}>
+        Withdraw
+      </button>
 
-      {error && <p>Error: {error}</p>}
+      {error && <p className="error">Error: {error}</p>}
 
       {Object.keys(banknotes).length > 0 && (
         <div>

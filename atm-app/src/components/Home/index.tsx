@@ -1,33 +1,31 @@
-import React from 'react';
 import './styles.css';
-import { Search, User } from 'react-feather';
+
+import React, { useState } from 'react';
+import { Users, DollarSign } from 'react-feather';
+import Accounts from '../Accounts';
 import Withdraw from '../Withdraw';
 
 const Home = () => {
+  const [selectedItem, setSelectedItem] = useState<string>('home');
+
   return (
-    <div className="container">
+    <div className="Home-container">
       <div className="sidebar">
-        <div className="user">
-          <User />
-          Gustavo Bernardes
-        </div>
-        <ul>
-          <li>Home</li>
-          <li>Balance</li>
-          <li>Withdraw</li>
-        </ul>
+        <li onClick={() => setSelectedItem('accounts')}>
+          <Users />
+          Accounts
+        </li>
+        <li onClick={() => setSelectedItem('withdraw')}>
+          <DollarSign />
+          Withdraw
+        </li>
       </div>
       <div className="main">
         <div className="header">
           <h1>Hello, Gustavo</h1>
-          <div className="search">
-            <input type="text" placeholder="Search..." />
-            <button>
-              <Search />
-            </button>
-          </div>
         </div>
-        <Withdraw />
+        {selectedItem === 'accounts' && <Accounts />}
+        {selectedItem === 'withdraw' && <Withdraw />}
       </div>
     </div>
   );

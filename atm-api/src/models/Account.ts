@@ -6,15 +6,6 @@ const Schema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
   balance: {
     type: Number,
     required: true,
