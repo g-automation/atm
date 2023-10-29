@@ -42,7 +42,7 @@ npm run dev
 ##### Back-end
 
 ```
-cd atm-api
+cd ./atm/atm-api
 ```
 
 ```
@@ -56,7 +56,7 @@ npm run start
 ##### Front-end
 
 ```
-cd atm-app
+cd ./atm/atm-app
 ```
 
 ```
