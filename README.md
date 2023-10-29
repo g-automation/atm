@@ -93,8 +93,8 @@ git push origin atm/nome-da-branch
 
 ### Contato
 
-Se você quiser entrar em contato comigo, você pode me alcançar em <gustavober59@gmail.com>.
+Se você quiser entrar em contato comigo: <gustavober59@gmail.com>
 
 ### Licença
 
-Este projeto usa a seguinte licença: MIT.
+Este projeto usa a licença: [MIT](https://mit-license.org/)
