@@ -20,6 +20,7 @@ const Home = () => {
           Withdraw
         </li>
       </div>
+
       <div className="main">
         <div className="header">
           <h1>Hello, Gustavo</h1>

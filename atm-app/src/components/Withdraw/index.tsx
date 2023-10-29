@@ -25,7 +25,16 @@ const Withdraw: React.FC = () => {
 
   return (
     <div className="Withdraw-container">
-      <h2>Withdrawal</h2>
+      <div>
+        <h3>
+          Balance:{' '}
+          {balance.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          })}
+        </h3>
+      </div>
+
       <input
         className="input"
         type="text"
@@ -58,15 +67,6 @@ const Withdraw: React.FC = () => {
           </ul>
         </div>
       )}
-      <div>
-        <h3>
-          Balance:{' '}
-          {balance.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-          })}
-        </h3>
-      </div>
     </div>
   );
 };

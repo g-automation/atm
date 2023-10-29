@@ -2,6 +2,7 @@ import './styles.css';
 
 import React, { useEffect, useState } from 'react';
 import { createAccount, getAccounts } from '../../services/atm';
+import { Clipboard } from 'react-feather';
 
 const Accounts: React.FC = () => {
   const [accounts, setAccounts] = useState<any[]>([]);
@@ -33,7 +34,6 @@ const Accounts: React.FC = () => {
 
   return (
     <div className="Accounts-container">
-      <h2>Accounts</h2>
       <button className="button" onClick={handleCreateAccount}>
         Create Account
       </button>
@@ -44,8 +44,30 @@ const Accounts: React.FC = () => {
         <div>
           <h3>Accounts List:</h3>
           <ul>
-            {accounts.map(({ accountNumber }) => (
-              <li key={accountNumber}>Account Number: {accountNumber}</li>
+            {accounts.map(({ accountNumber, balance }) => (
+              <li key={accountNumber}>
+                <p>
+                  Account Number: {accountNumber}
+                  <button
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: 0,
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => navigator.clipboard.writeText(accountNumber)}
+                    disabled={!accountNumber}
+                  >
+                    <Clipboard />
+                  </button>
+                </p>
+                <span>
+                  Balance:{' '}
+                  {balance.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  })}
+                </span>
+              </li>
             ))}
           </ul>
         </div>
