@@ -73,13 +73,28 @@ npm run start
 
 ### Faça um fork deste repositório.
 
-Crie uma branch: git checkout -b '<branch>'
+Crie uma branch:
+
+```
+git checkout -b nome-da-branch
+```
+
 &nbsp;
 
-Faça suas alterações e confirme-as: git commit -m '<mensagem_commit>'
+Faça suas alterações e confirme-as:
+
+```
+git commit -m 'mensagem-do-commit'
+```
+
 &nbsp;
 
-Envie para a branch original: git push origin '<nome_do_projeto>/<local>'
+Envie para a branch original:
+
+```
+git push origin 'atm/nome-da-branch'
+```
+
 &nbsp;
 
 ### Contato
