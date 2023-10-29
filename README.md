@@ -79,21 +79,17 @@ Crie uma branch:
 git checkout -b nome-da-branch
 ```
 
-&nbsp;
 Faça suas alterações e confirme-as:
 
 ```
 git commit -m 'mensagem-do-commit'
 ```
 
-&nbsp;
 Envie para a branch original:
 
 ```
 git push origin atm/nome-da-branch
 ```
-
-&nbsp;
 
 ### Contato
 
