@@ -64,7 +64,7 @@ npm install
 ```
 
 ```
-npm  start
+npm run start
 ```
 
 ## Contribuindo para Nome do Projeto
