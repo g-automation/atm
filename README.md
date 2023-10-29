@@ -10,7 +10,7 @@
 ### 1. Clonando o projeto e instalando dependências:
 
 ```
-git clone https://github.com/darkclyan/atm.git`
+git clone https://github.com/darkclyan/atm.git
 ```
 
 ```
