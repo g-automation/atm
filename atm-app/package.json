@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "update": "npm update && npm install"
+    "update": "npm update && npm install",
+    "dev:install": "npm install"
   },
   "eslintConfig": {
     "extends": [

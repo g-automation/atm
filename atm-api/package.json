@@ -7,7 +7,8 @@
     "start": "docker compose up -d && tsc -p . && node build/index.js",
     "dev": "nodemon src/index.ts",
     "build": "tsc -p .",
-    "update": "npm update && npm install"
+    "update": "npm update && npm install",
+    "dev:install": "npm install"
   },
   "keywords": [],
   "author": "",
