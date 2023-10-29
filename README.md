@@ -3,7 +3,6 @@
 ## Pré-requisitos
 
 [Node.js](https://nodejs.org/en/download)
-
 &nbsp;
 
 [Docker](https://www.docker.com/get-started/)
@@ -74,16 +73,13 @@ npm run start
 
 ### Faça um fork deste repositório.
 
-Crie uma branch: git checkout -b <branch_nome>.
-
+Crie uma branch: git checkout -b <branch>.
 &nbsp;
 
 Faça suas alterações e confirme-as: git commit -m '<mensagem_commit>'
-
 &nbsp;
 
 Envie para a branch original: git push origin <nome_do_projeto>/<local>
-
 &nbsp;
 
 ### Contato
