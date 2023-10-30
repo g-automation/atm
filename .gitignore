@@ -1,11 +1,13 @@
 node_modules
 
 # atm-api
-./atm-api/node_modules
-./atm-api/package-lock.json
-./atm-api/build
+atm-api/.env
+atm-api/build
+atm-api/node_modules
+atm-api/package-lock.json
 
 # atm-app
-./atm-app/node_modules
-./atm-app/package-lock.json
-./atm-app/build
+atm-app/.env
+atm-app/build
+atm-app/node_modules
+atm-app/package-lock.json

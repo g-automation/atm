@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently --kill-others \"npm run --prefix atm-api start\" \"npm run --prefix atm-app start\"",
-    "dev:install": "concurrently --kill-others \"npm install\" \"npm run --prefix atm-api dev:install\" \"npm run --prefix atm-app dev:install\"",
-    "update": "concurrently --kill-others \"npm update && npm install\" \"npm run --prefix atm-api update\" \"npm run --prefix atm-app update\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:api": "cd atm-api && npm install",
+    "install:app": "cd atm-app && npm install",
+    "postinstall": "run-p install:*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }

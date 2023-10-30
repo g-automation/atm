@@ -31,7 +31,7 @@ cd atm
 ```
 
 ```
-npm run dev:install
+npm install
 ```
 
 ```
