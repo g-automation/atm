@@ -19,9 +19,11 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch((error: Error) => console.log(error));
 
-app.use(cors({
-  credentials: true,
-}));
+app.use(
+  cors({
+    credentials: true,
+  }),
+);
 
 app.use(compression());
 app.use(cookieParser());
