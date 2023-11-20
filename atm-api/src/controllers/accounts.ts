@@ -29,20 +29,28 @@ const createAccount = async (req: Request, res: Response) => {
       balance: account.balance,
     });
   } catch (error) {
-    return res.status(500).send(`Internal server error creating a new account: ${error}`);
+    return res
+      .status(500)
+      .send(`Internal server error creating a new account: ${error}`);
   }
 };
 
 const deleteAccount = async (req: Request, res: Response) => {
   try {
-    await Account.findByIdAndDelete({ '_id': req.params.id })
+    const { accountNumber } = req.query;
+
+    const account = await Account.findOne({ accountNumber }).exec();
+
+    await Account.deleteOne({ _id: account?.id });
 
     return res.status(200).json({
       message: `Account number: deleted successfully!`,
     });
   } catch (error) {
     console.error(`${error}`);
-    return res.status(500).send(`Internal server error deleting account: ${error}`);
+    return res
+      .status(500)
+      .send(`Internal server error deleting account: ${error}`);
   }
 };
 
@@ -51,7 +59,9 @@ const deleteAllAccounts = async (req: Request, res: Response) => {
     await Account.deleteMany({});
     return res.status(200).send(`Accounts deleted successfully`);
   } catch (error) {
-    return res.status(500).send(`Internal server error deleting all accounts: ${error}`);
+    return res
+      .status(500)
+      .send(`Internal server error deleting all accounts: ${error}`);
   }
 };
 

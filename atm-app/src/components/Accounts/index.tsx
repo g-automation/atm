@@ -1,7 +1,12 @@
 import './styles.css';
 
 import React, { useEffect, useState } from 'react';
-import { createAccount, deleteAccount, deleteAllAccounts, getAccounts } from '../../services/atm';
+import {
+  createAccount,
+  deleteAccount,
+  deleteAllAccounts,
+  getAccounts,
+} from '../../services/atm';
 import { Copy, Delete, Edit } from 'react-feather';
 
 const Accounts: React.FC = () => {
@@ -28,10 +33,11 @@ const Accounts: React.FC = () => {
     }
   };
 
-  const handleDeleteAccount = async () => {
+  const handleDeleteAccount = async (accountNumber: string) => {
     try {
-      const data = await deleteAccount('_id');
-      setAccounts([...accounts, data.account]);
+      await deleteAccount(accountNumber);
+      const _accounts = await getAccounts();
+      setAccounts(_accounts.length > 0 ? [..._accounts] : []);
       setError(null);
     } catch (error: any) {
       setError(error);
@@ -40,7 +46,9 @@ const Accounts: React.FC = () => {
 
   const handleDeleteAllAccounts = async () => {
     try {
-      alert("This action is irreversible! Do you want to permanently delete all accounts?");
+      alert(
+        'This action is irreversible! Do you want to permanently delete all accounts?',
+      );
       await deleteAllAccounts();
       setError(null);
     } catch (error: any) {
@@ -62,49 +70,56 @@ const Accounts: React.FC = () => {
       </button>
       {error && <p className="error">Error: {error}</p>}
 
-      {
-        accounts.length > 0 && (
-          <div>
-            <h3>Accounts List:</h3>
-            <ul>
-              {accounts.map(({ accountNumber, fullName, email, phone, balance }) => (
-                <li key={accountNumber}>
-                  <p>
-                    Account Number: {accountNumber}
-                    <button className='icon-copy'
-                      onClick={() => navigator.clipboard.writeText(accountNumber)}
-                      disabled={!accountNumber}
-                    >
-                      <Copy />
-                    </button>
-                    <button className='icon-edit'>
-                      <Edit />
-                    </button>
-                    <button className='icon-delete' onClick={handleDeleteAccount}>
-                      <Delete />
-                    </button>
-                  </p>
-                  <p>
-                    <ul>
-                      Full Name: {fullName} <br />
-                      Email: {email} <br />
-                      Phone: {phone} <br />
-                    </ul>
-                  </p>
-                  <span>
-                    Balance:{' '}
-                    {balance.toLocaleString('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
-    </div >
+      {accounts.length > 0 && (
+        <div>
+          <h3>Accounts List:</h3>
+          <ul>
+            {accounts.length > 0 &&
+              accounts.map(
+                ({ accountNumber, fullName, email, phone, balance }) => (
+                  <li key={accountNumber}>
+                    <p>
+                      Account Number: {accountNumber}
+                      <button
+                        className="icon-copy"
+                        onClick={() =>
+                          navigator.clipboard.writeText(accountNumber)
+                        }
+                        disabled={!accountNumber}
+                      >
+                        <Copy />
+                      </button>
+                      <button className="icon-edit">
+                        <Edit />
+                      </button>
+                      <button
+                        className="icon-delete"
+                        onClick={() => handleDeleteAccount(accountNumber)}
+                      >
+                        <Delete />
+                      </button>
+                    </p>
+                    <p>
+                      <ul>
+                        Full Name: {fullName} <br />
+                        Email: {email} <br />
+                        Phone: {phone} <br />
+                      </ul>
+                    </p>
+                    <span>
+                      Balance:{' '}
+                      {balance.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      })}
+                    </span>
+                  </li>
+                ),
+              )}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 };
 
