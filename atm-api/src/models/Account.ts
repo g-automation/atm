@@ -11,7 +11,9 @@ const Schema = new mongoose.Schema({
     required: true,
     default: 10000,
   },
-});
+},
+  { timestamps: true } //save record/update creation date
+);
 
 const Account = mongoose.model('Account', Schema);
 

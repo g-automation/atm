@@ -16,16 +16,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 25%;
-
   padding: 15px;
-
   color: #FFFFFF;
+  font-weight: bold;
   background-color: #3233FD;
   border: 0px;
   border-radius: 35px;
 
+  cursor: pointer;
+}
+
+.button-delete-all {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  width: 25%;
+  padding: 10px;
+  color: #FFFFFF;
+  font-weight: bold;
+  background-color: #9b111e;
+  border: 0px;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.icon-copy,
+.icon-edit,
+.icon-delete {
+  background-color: transparent;
+  border: 0px;
   cursor: pointer;
 }
 

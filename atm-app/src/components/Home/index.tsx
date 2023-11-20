@@ -29,6 +29,7 @@ const Home = () => {
         {selectedItem === 'withdraw' && <Withdraw />}
       </div>
     </div>
+
   );
 };
 
