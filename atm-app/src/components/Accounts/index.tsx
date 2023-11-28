@@ -7,11 +7,12 @@ import {
   deleteAllAccounts,
   getAccounts,
 } from '../../services/atm';
-import { Copy, Delete, Edit } from 'react-feather';
+import { AlertCircle, Copy, Delete, Edit } from 'react-feather';
 
 const Accounts: React.FC = () => {
   const [accounts, setAccounts] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [onMouseOverButton, setOnMouseOverButton] = useState(false);
 
   const handleCreateAccount = async () => {
     try {
@@ -46,15 +47,27 @@ const Accounts: React.FC = () => {
 
   const handleDeleteAllAccounts = async () => {
     try {
-      alert(
-        'This action is irreversible! Do you want to permanently delete all accounts?',
-      );
-      await deleteAllAccounts();
-      setError(null);
+      const _accounts = await getAccounts();
+      if (window.confirm(
+        'Do you really want to permanently delete all accounts? This action is irreversible!') === false) {
+        setAccounts(_accounts);
+      } else {
+        await deleteAllAccounts();
+        setAccounts(_accounts.length);
+        setError(null);
+      }
     } catch (error: any) {
       setError(error);
     }
   };
+
+  const handleMouseOver = () => {
+    setOnMouseOverButton(true);
+  };
+
+  const handleMouseOut = () => {
+    setOnMouseOverButton(false);
+  }
 
   useEffect(() => {
     handleAccounts();
@@ -65,9 +78,6 @@ const Accounts: React.FC = () => {
       <button className="button" onClick={handleCreateAccount}>
         Create Account
       </button>
-      <button className="button-delete-all" onClick={handleDeleteAllAccounts}>
-        Delete all Accounts
-      </button>
       {error && <p className="error">Error: {error}</p>}
 
       {accounts.length > 0 && (
@@ -76,11 +86,12 @@ const Accounts: React.FC = () => {
           <ul>
             {accounts.length > 0 &&
               accounts.map(
-                ({ accountNumber, fullName, email, phone, balance }) => (
+                ({ accountNumber, fullName, balance }) => (
                   <li key={accountNumber}>
                     <p>
                       Account Number: {accountNumber}
                       <button
+                        title='Copy Account Number'
                         className="icon-copy"
                         onClick={() =>
                           navigator.clipboard.writeText(accountNumber)
@@ -89,10 +100,13 @@ const Accounts: React.FC = () => {
                       >
                         <Copy />
                       </button>
-                      <button className="icon-edit">
+                      <button
+                        title='Edit Account'
+                        className="icon-edit">
                         <Edit />
                       </button>
                       <button
+                        title='Delete Account'
                         className="icon-delete"
                         onClick={() => handleDeleteAccount(accountNumber)}
                       >
@@ -102,8 +116,6 @@ const Accounts: React.FC = () => {
                     <p>
                       <ul>
                         Full Name: {fullName} <br />
-                        Email: {email} <br />
-                        Phone: {phone} <br />
                       </ul>
                     </p>
                     <span>
@@ -119,6 +131,17 @@ const Accounts: React.FC = () => {
           </ul>
         </div>
       )}
+      <button
+        className="button-delete-all"
+        onClick={handleDeleteAllAccounts}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        {onMouseOverButton && (
+          <AlertCircle />
+        )}
+        Delete all Accounts
+      </button>
     </div>
   );
 };

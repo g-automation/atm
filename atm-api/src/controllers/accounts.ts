@@ -47,7 +47,6 @@ const deleteAccount = async (req: Request, res: Response) => {
       message: `Account number: deleted successfully!`,
     });
   } catch (error) {
-    console.error(`${error}`);
     return res
       .status(500)
       .send(`Internal server error deleting account: ${error}`);
