@@ -30,10 +30,10 @@
 .button-delete-all {
   display: flex;
   justify-content: center;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
   width: 25%;
-  padding: 10px;
+  padding: 15px;
   color: #FFFFFF;
   font-weight: bold;
   background-color: #9b111e;
@@ -46,8 +46,18 @@
 .icon-edit,
 .icon-delete {
   background-color: transparent;
+  margin-left: 8px;
+  padding: 2px 7px 2px 7px;
   border: 0px;
   cursor: pointer;
+}
+
+.icon-copy:hover,
+.icon-edit:hover,
+.icon-delete:hover {
+  background-color: #8c8c8c;
+  color: #fff;
+  border-radius: 3px;
 }
 
 .error {

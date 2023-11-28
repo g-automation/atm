@@ -1,9 +1,10 @@
 import './styles.css';
 
 import React, { useState } from 'react';
-import { Users, DollarSign } from 'react-feather';
+import { Users, DollarSign, User } from 'react-feather';
 import Accounts from '../Accounts';
 import Withdraw from '../Withdraw';
+import Customers from '../Customers';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState<string>('home');
@@ -11,6 +12,10 @@ const Home = () => {
   return (
     <div className="Home-container">
       <div className="sidebar">
+        <li onClick={() => setSelectedItem('customer')}>
+          <User />
+          Customers
+        </li>
         <li onClick={() => setSelectedItem('accounts')}>
           <Users />
           Accounts
@@ -27,6 +32,7 @@ const Home = () => {
         </div>
         {selectedItem === 'accounts' && <Accounts />}
         {selectedItem === 'withdraw' && <Withdraw />}
+        {selectedItem === 'customers' && <Customers />}
       </div>
     </div>
 
