@@ -35,7 +35,6 @@ const Home = () => {
         {selectedItem === 'customers' && <Customers />}
       </div>
     </div>
-
   );
 };
 

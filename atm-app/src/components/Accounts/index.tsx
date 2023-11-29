@@ -48,8 +48,11 @@ const Accounts: React.FC = () => {
   const handleDeleteAllAccounts = async () => {
     try {
       const _accounts = await getAccounts();
-      if (window.confirm(
-        'Do you really want to permanently delete all accounts? This action is irreversible!') === false) {
+      if (
+        window.confirm(
+          'Do you really want to permanently delete all accounts? This action is irreversible!',
+        ) === false
+      ) {
         setAccounts(_accounts);
       } else {
         await deleteAllAccounts();
@@ -67,7 +70,7 @@ const Accounts: React.FC = () => {
 
   const handleMouseOut = () => {
     setOnMouseOverButton(false);
-  }
+  };
 
   useEffect(() => {
     handleAccounts();
@@ -85,49 +88,45 @@ const Accounts: React.FC = () => {
           <h3>Accounts List:</h3>
           <ul>
             {accounts.length > 0 &&
-              accounts.map(
-                ({ accountNumber, fullName, balance }) => (
-                  <li key={accountNumber}>
-                    <p>
-                      Account Number: {accountNumber}
-                      <button
-                        title='Copy Account Number'
-                        className="icon-copy"
-                        onClick={() =>
-                          navigator.clipboard.writeText(accountNumber)
-                        }
-                        disabled={!accountNumber}
-                      >
-                        <Copy />
-                      </button>
-                      <button
-                        title='Edit Account'
-                        className="icon-edit">
-                        <Edit />
-                      </button>
-                      <button
-                        title='Delete Account'
-                        className="icon-delete"
-                        onClick={() => handleDeleteAccount(accountNumber)}
-                      >
-                        <Delete />
-                      </button>
-                    </p>
-                    <p>
-                      <ul>
-                        Full Name: {fullName} <br />
-                      </ul>
-                    </p>
-                    <span>
-                      Balance:{' '}
-                      {balance.toLocaleString('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL',
-                      })}
-                    </span>
-                  </li>
-                ),
-              )}
+              accounts.map(({ accountNumber, fullName, balance }) => (
+                <li key={accountNumber}>
+                  <p>
+                    Account Number: {accountNumber}
+                    <button
+                      title="Copy Account Number"
+                      className="icon-copy"
+                      onClick={() =>
+                        navigator.clipboard.writeText(accountNumber)
+                      }
+                      disabled={!accountNumber}
+                    >
+                      <Copy />
+                    </button>
+                    <button title="Edit Account" className="icon-edit">
+                      <Edit />
+                    </button>
+                    <button
+                      title="Delete Account"
+                      className="icon-delete"
+                      onClick={() => handleDeleteAccount(accountNumber)}
+                    >
+                      <Delete />
+                    </button>
+                  </p>
+                  <p>
+                    <ul>
+                      Full Name: {fullName} <br />
+                    </ul>
+                  </p>
+                  <span>
+                    Balance:{' '}
+                    {balance.toLocaleString('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL',
+                    })}
+                  </span>
+                </li>
+              ))}
           </ul>
         </div>
       )}
@@ -137,9 +136,7 @@ const Accounts: React.FC = () => {
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
-        {onMouseOverButton && (
-          <AlertCircle />
-        )}
+        {onMouseOverButton && <AlertCircle />}
         Delete all Accounts
       </button>
     </div>

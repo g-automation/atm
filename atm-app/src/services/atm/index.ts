@@ -14,8 +14,9 @@ export const createAccount = async () => {
 
 export const getAccounts = async (accountNumber?: string) => {
   try {
-    const ENDPOINT = `accounts${accountNumber ? `/accountNumber=${accountNumber}` : ''
-      }`;
+    const ENDPOINT = `accounts${
+      accountNumber ? `/accountNumber=${accountNumber}` : ''
+    }`;
     const response = await axios.get(`${API_URL}${ENDPOINT}`);
     return response.data;
   } catch (error: any) {
@@ -25,8 +26,9 @@ export const getAccounts = async (accountNumber?: string) => {
 
 export const deleteAccount = async (accountNumber?: string) => {
   try {
-    const ENDPOINT = `accounts/delete${accountNumber ? `?accountNumber=${accountNumber}` : ''
-      }`;
+    const ENDPOINT = `accounts/delete${
+      accountNumber ? `?accountNumber=${accountNumber}` : ''
+    }`;
     const response = await axios.delete(`${API_URL}${ENDPOINT}`);
     return response.data;
   } catch (error: any) {
