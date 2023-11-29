@@ -24,6 +24,27 @@ export const getAccounts = async (accountNumber?: string) => {
   }
 };
 
+export const deleteAccount = async (accountNumber?: string) => {
+  try {
+    const ENDPOINT = `accounts/delete${
+      accountNumber ? `?accountNumber=${accountNumber}` : ''
+    }`;
+    const response = await axios.delete(`${API_URL}${ENDPOINT}`);
+    return response.data;
+  } catch (error: any) {
+    throw error.response.data;
+  }
+};
+
+export const deleteAllAccounts = async () => {
+  try {
+    const ENDPOINT = `accounts/delete/all`;
+    return await axios.delete(`${API_URL}${ENDPOINT}`);
+  } catch (error: any) {
+    throw error.response.data;
+  }
+};
+
 export const withdraw = async ({
   accountNumber,
   amount,
