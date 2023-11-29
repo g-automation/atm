@@ -9,7 +9,8 @@ import compression from 'compression';
 import statusRoutes from './routes/status';
 import accountsRoutes from './routes/accounts';
 import atmRoutes from './routes/atm';
-import router from './routes/auth'; // to authentication
+import customersRoutes from './routes/customers';
+import authRoutes from './routes/authentication';
 
 const app = express();
 const uri = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/cluster0';
@@ -32,7 +33,8 @@ app.use(bodyParser.json());
 app.use('/api', statusRoutes);
 app.use('/accounts', accountsRoutes);
 app.use('/atm', atmRoutes);
-app.use('/', router()); // to authentication
+app.use('/customers', customersRoutes);
+app.use('/auth', authRoutes);
 
 const PORT = process.env.PORT ?? 3001;
 

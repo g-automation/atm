@@ -15,10 +15,15 @@ export const getAllCustomers = async () => {
   }
 };
 
-export const register = async () => {
+export const register = async (body: {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+}) => {
   try {
     const ENDPOINT = `auth/register`;
-    const response = await axios.post(`${API_URL}${ENDPOINT}`);
+    const response = await axios.post(`${API_URL}${ENDPOINT}`, body);
 
     console.log(response.data);
     return response.data;

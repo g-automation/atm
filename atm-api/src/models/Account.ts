@@ -13,13 +13,7 @@ const Schema = new mongoose.Schema(
       default: 10000,
     },
   },
-  balance: {
-    type: Number,
-    required: true,
-    default: 10000,
-  },
-},
-  { timestamps: true } //save record/update creation date
+  { timestamps: true }, //save record/update creation date
 );
 
 const Account = mongoose.model('Account', Schema);
