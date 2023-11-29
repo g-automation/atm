@@ -13,6 +13,10 @@ const Home = () => {
   return (
     <div className="Home-container">
       <div className="sidebar">
+        <li onClick={() => setSelectedItem('customer')}>
+          <User />
+          Customers
+        </li>
         <li onClick={() => setSelectedItem('accounts')}>
           <Users />
           Accounts
@@ -40,7 +44,7 @@ const Home = () => {
         {selectedItem === 'customers' && <Customers />}
         {selectedItem === 'customersList' && <CustomersList />}
       </div>
-    </div >
+    </div>
   );
 };
 

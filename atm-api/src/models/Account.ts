@@ -1,10 +1,17 @@
 import mongoose from 'mongoose';
 
-const Schema = new mongoose.Schema({
-  accountNumber: {
-    type: String,
-    required: true,
-    unique: true,
+const Schema = new mongoose.Schema(
+  {
+    accountNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    balance: {
+      type: Number,
+      required: true,
+      default: 10000,
+    },
   },
   balance: {
     type: Number,
