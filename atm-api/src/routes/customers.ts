@@ -4,7 +4,7 @@ import { getAllCustomers, deleteCustomer, updateCustomer } from "../controllers/
 import { isAuthenticated, isOwner } from "../middlewares/customers";
 
 export default (router: Router) => {
-    router.get('/customers', isAuthenticated, getAllCustomers);
+    router.get('/customers', getAllCustomers);
     router.delete('/customers/:id', isAuthenticated, deleteCustomer);
     router.patch('/customers/:id', isAuthenticated, updateCustomer);
 };

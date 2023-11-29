@@ -1,59 +1,43 @@
 import './styles.css';
 
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useState } from "react";
+import { register } from '../../services/customer';
 
 const Customers: React.FC = () => {
-    //const [customers, setCustomers] = useState<any[]>([]);
+    //const [customers, setCustomers] = useState<string[]>([]);
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
 
-    const handleValuesInput = () => {
+    const handleCreateCustomer = async (e: FormEvent) => {
+        console.log()
+        e.preventDefault();
         try {
-            const data = { name, email, phone, password };
+            const data = await register();
             setName(data.name);
             setEmail(data.email);
             setPhone(data.phone);
             setPassword(data.password);
+            // setCustomers(customers);
+            console.log(data);
             setError(null);
         } catch (error: any) {
+            console.log(error);
             setError(error);
         }
     };
 
-    // const handleRegisterCustomer = async () => {
-    //     try {
-    //         const data = await register({ name, email, phone, password });
-    //         setCustomers(data)
-    //         setCustomers(customers);
-    //         setError(null);
-    //     } catch (error: any) {
-    //         setError(error);
-    //     }
-    // };
-
-    // const handleCustomers = async () => {
-    //     try {
-    //         const data = await getAllCustomers();
-    //         setCustomers(data);
-    //         setError(null);
-    //     } catch (error: any) {
-    //         setError(error);
-    //     }
-    // }
-
-    useEffect(() => {
-
-    },);
+    //useEffect(() => { }, []);
 
     return (
-        <div className="customer-container">
+        <div className="Customers-form-container">
             <main>
                 <form
                     className="customer-form"
-                    onSubmit={handleValuesInput}
+                    onSubmit={handleCreateCustomer}
+                    method="post"
                 >
                     <h3>Register Customer</h3>
                     <label className="customer-label">Full name </label>
@@ -96,33 +80,15 @@ const Customers: React.FC = () => {
                         placeholder="Create an access password"
                     />
                     <br /><br />
-                    <button
-                        className="customer-button"
-                        onClick={() => { }}
-                    >
+                    <button type="submit" className="customer-button">
                         Register
                     </button>
-
                     {error && <p className="error">Error: {error}</p>}
+
                 </form>
-                <br />
-                <div>
-                    <button
-                        className="customer-button"
-                        onClick={() => { }}
-                    >
-                        Show all Customers
-                    </button>
-
-                    {error && <p className="error">Error: {error}</p>}
-                </div>
             </main>
-            <div>
-
-            </div>
-        </div>
-
+        </div >
     );
-}
+};
 
 export default Customers;

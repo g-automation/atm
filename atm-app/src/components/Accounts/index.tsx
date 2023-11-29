@@ -86,7 +86,7 @@ const Accounts: React.FC = () => {
           <ul>
             {accounts.length > 0 &&
               accounts.map(
-                ({ accountNumber, fullName, balance }) => (
+                ({ accountNumber, balance }) => (
                   <li key={accountNumber}>
                     <p>
                       Account Number: {accountNumber}
@@ -112,11 +112,6 @@ const Accounts: React.FC = () => {
                       >
                         <Delete />
                       </button>
-                    </p>
-                    <p>
-                      <ul>
-                        Full Name: {fullName} <br />
-                      </ul>
                     </p>
                     <span>
                       Balance:{' '}
