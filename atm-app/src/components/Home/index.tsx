@@ -1,10 +1,11 @@
 import './styles.css';
 
 import React, { useState } from 'react';
-import { Users, DollarSign, User } from 'react-feather';
+import { Users, DollarSign, User, List } from 'react-feather';
 import Accounts from '../Accounts';
 import Withdraw from '../Withdraw';
-import Customers from '../Customers';
+import Customers from '../Customers/Form';
+import CustomersList from '../Customers/List';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState<string>('home');
@@ -24,6 +25,14 @@ const Home = () => {
           <DollarSign />
           Withdraw
         </li>
+        <li onClick={() => setSelectedItem('customers')}>
+          <User />
+          Register Customer
+        </li>
+        <li onClick={() => setSelectedItem('customersList')}>
+          <List />
+          List Customers
+        </li>
       </div>
 
       <div className="main">
@@ -33,6 +42,7 @@ const Home = () => {
         {selectedItem === 'accounts' && <Accounts />}
         {selectedItem === 'withdraw' && <Withdraw />}
         {selectedItem === 'customers' && <Customers />}
+        {selectedItem === 'customersList' && <CustomersList />}
       </div>
     </div>
   );
