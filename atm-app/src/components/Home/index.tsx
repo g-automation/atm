@@ -1,11 +1,12 @@
 import './styles.css';
 
 import React, { useState } from 'react';
-import { Users, DollarSign, User, List } from 'react-feather';
+import { Users, DollarSign, List, LogIn, ArrowRight } from 'react-feather';
 import Accounts from '../Accounts';
 import Withdraw from '../Withdraw';
-import Customers from '../Customers/Form';
+import Register from '../Customers/RegisterForm';
 import CustomersList from '../Customers/List';
+import Login from '../Customers/LoginForm';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState<string>('home');
@@ -13,10 +14,6 @@ const Home = () => {
   return (
     <div className="Home-container">
       <div className="sidebar">
-        <li onClick={() => setSelectedItem('customer')}>
-          <User />
-          Customers
-        </li>
         <li onClick={() => setSelectedItem('accounts')}>
           <Users />
           Accounts
@@ -25,13 +22,17 @@ const Home = () => {
           <DollarSign />
           Withdraw
         </li>
-        <li onClick={() => setSelectedItem('customers')}>
-          <User />
-          Register Customer
+        <li onClick={() => setSelectedItem('register')}>
+          <ArrowRight />
+          Register
+        </li>
+        <li onClick={() => setSelectedItem('login')}>
+          <LogIn />
+          Login
         </li>
         <li onClick={() => setSelectedItem('customersList')}>
           <List />
-          List Customers
+          Registers
         </li>
       </div>
 
@@ -39,9 +40,10 @@ const Home = () => {
         <div className="header">
           <h1>Hello, Gustavo</h1>
         </div>
+        {selectedItem === 'login' && <Login />}
         {selectedItem === 'accounts' && <Accounts />}
         {selectedItem === 'withdraw' && <Withdraw />}
-        {selectedItem === 'customers' && <Customers />}
+        {selectedItem === 'register' && <Register />}
         {selectedItem === 'customersList' && <CustomersList />}
       </div>
     </div>

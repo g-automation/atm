@@ -31,8 +31,8 @@ const CustomersList: React.FC = () => {
     }, []);
 
     return (
-        <div className="Customers-list-container">
-            <h3>List customers:</h3>
+        <div className="Customers-container">
+            <h3>Registers list:</h3>
             <ul>
                 {customers.map((customer) => (
                     <li key={customer._id}>

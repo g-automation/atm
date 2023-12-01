@@ -6,9 +6,9 @@ import { random, authentication } from '../helpers/authentication';
 export const register = async (req: Request, res: Response) => {
   try {
     const { name, email, phone, password } = await req.body;
-    if (!name || !email || !password) {
+    if (!name || !email || !phone || !password) {
       return res.status(400).json({
-        message: 'Enter your full name, email and password!',
+        message: 'Enter your full name, email, phone and password!',
       });
     }
 
