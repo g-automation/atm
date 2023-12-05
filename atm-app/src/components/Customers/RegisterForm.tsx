@@ -47,71 +47,79 @@ const Register: React.FC = () => {
       showMessage('Register successful!');
 
     } catch (error: any) {
-      setError(error);
+      showMessage('Existing email. Try with another email.');
     }
   };
   //useEffect(() => { }, []);
 
   return (
     <div className="Register-container">
-      <main>
-        <form
-          className="register-form"
-          onSubmit={handleRegister}
-          method="post"
+      <form
+        className="register-form"
+        onSubmit={handleRegister}
+        method="post"
+        autoComplete="off"
+      >
+        <fieldset className='register-fieldset'>
+          <h2>Register</h2>
+          <div className="register-div">
+            <label className="register-label" htmlFor="name">Full name </label>
+            <input
+              className="register-input"
+              type="text"
+              autoComplete="false"
+              name="name"
+              value={name}
+              placeholder="Enter your full name"
+              onChange={e => setName(e.target.value)}
+            />
+          </div>
+          <div className="register-div">
+            <label className="register-label" htmlFor="email">Email </label>
+            <input
+              className="register-input"
+              type="email"
+              autoComplete="off"
+              name="email"
+              value={email}
+              placeholder="Enter your best email"
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="register-div">
+            <label className="register-label" htmlFor="phone">Phone </label>
+            <input
+              className="register-input"
+              type="tel"
+              autoComplete="false"
+              name="phone"
+              value={phone}
+              placeholder="-- ----- ----"
+              onChange={e => setPhone(e.target.value)}
+            />
+          </div>
+          <div className="register-div">
+            <label className="register-label" htmlFor="password">Password </label>
+            <input
+              className="register-input"
+              type="password"
+              autoComplete="new-password"
+              name="password"
+              value={password}
+              placeholder="Create an access password"
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
+        </fieldset>
+        <button
+          className="register-button"
+          type="submit"
         >
-          <h3>Register</h3>
-          <label className="register-label" htmlFor="name">Full name </label>
-          <input
-            className="register-input"
-            type="text"
-            name="name"
-            value={name}
-            placeholder="Enter your full name"
-            onChange={e => setName(e.target.value)}
-          />
-          <br />
-          <br />
-          <label className="register-label" htmlFor="email">Email </label>
-          <input
-            className="register-input"
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter your best email"
-            onChange={e => setEmail(e.target.value)}
-          />
-          <br />
-          <br />
-          <label className="register-label" htmlFor="phone">Phone </label>
-          <input
-            className="register-input"
-            type="tel"
-            name="phone"
-            value={phone}
-            placeholder="-- ----- ----"
-            onChange={e => setPhone(e.target.value)}
-          />
-          <br />
-          <br />
-          <label className="register-label" htmlFor="password">Password </label>
-          <input
-            className="register-input"
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Create an access password"
-            onChange={e => setPassword(e.target.value)}
-          />
-          <br />
-          <br />
-          <button type="submit" className="register-button">
-            Register
-          </button>
-          {error && <p className="error">Error: {error}</p>}
-        </form>
-        {message && <p className="message">{message}</p>}
-      </main>
+          Register
+        </button>
+        {error && <p className="error">Error: {error}</p>}
+      </form>
+      {message && <p className="message">{message}</p>}
     </div>
   );
 };

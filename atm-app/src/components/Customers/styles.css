@@ -1,0 +1,78 @@
+.Register-container,
+.Login-container {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.register-form,
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5px;
+}
+
+.register-fieldset,
+.login-fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 3px 44px;
+    border: 1px solid #eaecef;
+    border-radius: 25px;
+    box-shadow: 0px 5px 3px #00000029;
+}
+
+.register-div,
+.login-div {
+    width: 75%;
+    padding: 12px 3px;
+}
+
+.register-label,
+.login-label {
+    font-size: 14px;
+}
+
+.register-input,
+.login-input {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #eaecef;
+    border-radius: 5px;
+    box-shadow: 0px 5px 3px #00000029;
+}
+
+.register-button,
+.login-button {
+    text-align: center;
+    flex: 1;
+    width: 100%;
+    background-color: #3233FD;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 35px;
+    padding: 1rem 1.5rem;
+    margin: 8px 2px;
+
+    &:hover {
+        background-color: #ffffff;
+        color: #3233FD;
+        border: 1px solid #3233FD;
+        font-weight: bold;
+    }
+}
+
+.message {
+    display: block;
+    color: #ff4040;
+    border: 2px solid #eaecef;
+    border-radius: 5px;
+    text-align: center;
+    padding: 2px 5px;
+    font-weight: bold;
+}
