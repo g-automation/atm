@@ -4,7 +4,7 @@ import React, { FormEvent, useState } from 'react';
 import { login } from '../../services/customer';
 //import { Routes, Route, Navigate } from 'react-router-dom';
 
-const Login: React.FC = () => {
+const Login: React.FC<{ onSuccessLogin: () => void }> = ({ onSuccessLogin }) => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [message, setMessage] = useState<string | null>(null);
@@ -40,7 +40,7 @@ const Login: React.FC = () => {
             setError(null);
             resetForm();
             showMessage('Login successful!');
-
+            onSuccessLogin();
         } catch (error: any) {
             showMessage('Invalid email or password. Please try again.');
         }
