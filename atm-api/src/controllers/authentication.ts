@@ -2,13 +2,13 @@ import { Request, Response } from 'express';
 import { createCustomer, getCustomerByEmail } from '../models/Customer';
 import { random, authentication } from '../helpers/authentication';
 
-//register customer
+//register
 export const register = async (req: Request, res: Response) => {
   try {
     const { name, email, phone, password } = await req.body;
-    if (!name || !email || !password) {
+    if (!name || !email || !phone || !password) {
       return res.status(400).json({
-        message: 'Enter your full name, email and password!',
+        message: 'Enter your full name, email, phone and password!',
       });
     }
 
@@ -37,7 +37,7 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-//check login
+//login
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -58,14 +58,14 @@ export const login = async (req: Request, res: Response) => {
       });
     }
 
-    //authentication, compare hashes
+    //compare hashes
     const expectedHash = authentication(
       customer.authentication?.salt ?? '',
       password,
     );
     if (customer.authentication?.password !== expectedHash) {
       return res.status(403).json({
-        message: 'No authorized!',
+        message: 'Unauthorized!',
         expectedHash,
       });
     }
@@ -87,6 +87,22 @@ export const login = async (req: Request, res: Response) => {
       message: 'Login successfully!',
       customer,
     });
+  } catch (error) {
+    return res.status(400).send(`${error}`);
+  }
+};
+
+//logout
+export const logout = async (req: Request, res: Response) => {
+  try {
+    res.cookie('ATM-AUTHENTICATION-API', '', {
+      domain: 'localhost',
+      path: '/',
+      expires: new Date(Date.now()),
+    });
+    return res.status(200).json({
+      message: 'Logout successfully!',
+    })
   } catch (error) {
     return res.status(400).send(`${error}`);
   }

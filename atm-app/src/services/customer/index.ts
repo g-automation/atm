@@ -22,8 +22,37 @@ export const register = async (body: {
   password: string;
 }) => {
   try {
-    const ENDPOINT = `auth/register`;
+    const ENDPOINT = `authentication/register`;
     const response = await axios.post(`${API_URL}${ENDPOINT}`, body);
+
+    console.log(response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error.response.data;
+  }
+};
+
+export const login = async (body: {
+  email: string;
+  password: string;
+}) => {
+  try {
+    const ENDPOINT = `authentication/login`;
+    const response = await axios.post(`${API_URL}${ENDPOINT}`, body);
+
+    console.log(response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error.response.data;
+  }
+};
+
+export const logout = async () => {
+  try {
+    const ENDPOINT = `authentication/logout`;
+    const response = await axios.post(`${API_URL}${ENDPOINT}`);
 
     console.log(response.data);
     return response.data;

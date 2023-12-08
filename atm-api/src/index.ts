@@ -10,7 +10,7 @@ import statusRoutes from './routes/status';
 import accountsRoutes from './routes/accounts';
 import atmRoutes from './routes/atm';
 import customersRoutes from './routes/customers';
-import authRoutes from './routes/authentication';
+import authenticationRoutes from './routes/authentication';
 
 const app = express();
 const uri = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/cluster0';
@@ -34,7 +34,7 @@ app.use('/api', statusRoutes);
 app.use('/accounts', accountsRoutes);
 app.use('/atm', atmRoutes);
 app.use('/customers', customersRoutes);
-app.use('/auth', authRoutes);
+app.use('/authentication', authenticationRoutes);
 
 const PORT = process.env.PORT ?? 3001;
 
