@@ -1,20 +1,38 @@
 import './styles.css';
 
 import React, { useState } from 'react';
-import { Users, DollarSign, List, LogIn, User } from 'react-feather';
+import { Users, DollarSign, List, LogIn, User, LogOut } from 'react-feather';
 import Accounts from '../Accounts';
 import Withdraw from '../Withdraw';
 import Register from '../Customers/RegisterForm';
 import CustomersList from '../Customers/List';
 import Login from '../Customers/LoginForm';
+import { logout } from '../../services/customer';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState<string>('home');
   const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);
+  const [cookie, setCookie] = useState<any | null>(null);
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
-  }
+  };
+
+  const handleRegisterSuccess = async () => {
+    setIsRegistered(true);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setCookie(null);
+      setIsLogged(false); //logged out
+      console.log('Logout successful:', cookie);
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
 
   return (
     <div className="Home-container">
@@ -32,6 +50,11 @@ const Home = () => {
             <li onClick={() => setSelectedItem('customersList')}>
               <List />
               Registers
+            </li>
+            <li onClick={handleLogout}>
+              <LogOut />
+              Logout
+
             </li>
           </>
         ) : (
@@ -52,10 +75,14 @@ const Home = () => {
         <div className="header">
           <h1>Hello, Gustavo</h1>
         </div>
-        {selectedItem === 'login' && <Login onSuccessLogin={handleLoginSuccess} />}
+        {selectedItem === 'register' && (
+          <Register onSuccessRegister={handleRegisterSuccess} />
+        )}
+        {selectedItem === 'login' && (
+          <Login onSuccessLogin={handleLoginSuccess} />
+        )}
         {selectedItem === 'accounts' && <Accounts />}
         {selectedItem === 'withdraw' && <Withdraw />}
-        {selectedItem === 'register' && <Register />}
         {selectedItem === 'customersList' && <CustomersList />}
       </div>
     </div>

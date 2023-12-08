@@ -70,9 +70,6 @@
 .message {
     display: block;
     color: #ff4040;
-    border: 2px solid #eaecef;
-    border-radius: 5px;
     text-align: center;
-    padding: 2px 5px;
     font-weight: bold;
 }

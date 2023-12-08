@@ -1,8 +1,8 @@
 import './styles.css';
 
 import React, { FormEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { login } from '../../services/customer';
-//import { Routes, Route, Navigate } from 'react-router-dom';
 
 const Login: React.FC<{ onSuccessLogin: () => void }> = ({ onSuccessLogin }) => {
     const [email, setEmail] = useState<string>('');
@@ -82,9 +82,15 @@ const Login: React.FC<{ onSuccessLogin: () => void }> = ({ onSuccessLogin }) => 
                 </fieldset>
                 <button
                     className="login-button"
-                    type="submit">
+                    type="submit"
+                >
                     Login
                 </button>
+
+                <span>
+                    Don't have an account? <Link to='/register'>Register</Link>
+                </span>
+
                 {error && <p className="error">Error: {error}</p>}
             </form>
             {message && <p className="message">{message}</p>}
