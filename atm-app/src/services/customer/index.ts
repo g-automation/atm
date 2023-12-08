@@ -48,3 +48,16 @@ export const login = async (body: {
     throw error.response.data;
   }
 };
+
+export const logout = async () => {
+  try {
+    const ENDPOINT = `authentication/logout`;
+    const response = await axios.post(`${API_URL}${ENDPOINT}`);
+
+    console.log(response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error.response.data;
+  }
+};

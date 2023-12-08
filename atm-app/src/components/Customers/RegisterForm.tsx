@@ -1,9 +1,10 @@
 import './styles.css';
 
 import React, { FormEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { register } from '../../services/customer';
 
-const Register: React.FC = () => {
+const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegister }) => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
@@ -45,12 +46,11 @@ const Register: React.FC = () => {
       setError(null);
       resetForm();
       showMessage('Register successful!');
-
+      onSuccessRegister();
     } catch (error: any) {
       showMessage('Existing email. Try with another email.');
     }
   };
-  //useEffect(() => { }, []);
 
   return (
     <div className="Register-container">
@@ -117,6 +117,11 @@ const Register: React.FC = () => {
         >
           Register
         </button>
+
+        <span>
+          Already have an account? <Link to='/login'>Login</Link>
+        </span>
+
         {error && <p className="error">Error: {error}</p>}
       </form>
       {message && <p className="message">{message}</p>}
