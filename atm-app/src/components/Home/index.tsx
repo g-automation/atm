@@ -1,13 +1,15 @@
 import './styles.css';
 
 import React, { useState } from 'react';
-import { Users, DollarSign, List, LogIn, User, LogOut } from 'react-feather';
+import { Users, DollarSign, List, LogIn, User, LogOut, Maximize2 } from 'react-feather';
 import Accounts from '../Accounts';
 import Withdraw from '../Withdraw';
 import Register from '../Customers/RegisterForm';
 import CustomersList from '../Customers/List';
 import Login from '../Customers/LoginForm';
 import { logout } from '../../services/customer';
+import { Modal } from '../Modals/Modal';
+import { useModal } from '../../hooks/useModal';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState<string>('home');
@@ -34,6 +36,44 @@ const Home = () => {
     }
   };
 
+  // test modal
+  const [modalIsVisible, toggleModalVisibility] = useModal();
+  const modalContent: React.ReactNode = (
+    // modal content
+    <div>
+      <h3>Modal Test</h3>
+      <form>
+        <fieldset>
+          <legend>Form</legend>
+          <div>
+            <label htmlFor="label">Label </label>
+            <input type="text" placeholder="Enter with an input" />
+          </div>
+          <div>
+            <label htmlFor="label">Label </label>
+            <input type="text" placeholder="Enter with an input" />
+          </div>
+          <fieldset>
+            <legend>Choose</legend>
+            <div>
+              <label htmlFor="select">Select </label>
+              <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </fieldset>
+          <div>
+            <input type="checkbox" id="check" name="check" />
+            <label htmlFor="check"> Check</label>
+          </div>
+        </fieldset>
+        <button type='submit'>Submit</button>
+      </form>
+    </div>
+  );
+
   return (
     <div className="Home-container">
       <div className="sidebar">
@@ -54,7 +94,18 @@ const Home = () => {
             <li onClick={handleLogout}>
               <LogOut />
               Logout
-
+            </li>
+            <li
+              onClick={() => {
+                setSelectedItem('useModal');
+                toggleModalVisibility();
+                // setTimeout(() => {
+                //   console.log('modalIsVisible:', modalIsVisible);
+                // }, 0);
+              }}
+            >
+              <Maximize2 />
+              Modal
             </li>
           </>
         ) : (
@@ -84,6 +135,13 @@ const Home = () => {
         {selectedItem === 'accounts' && <Accounts />}
         {selectedItem === 'withdraw' && <Withdraw />}
         {selectedItem === 'customersList' && <CustomersList />}
+        {selectedItem === 'useModal' && (
+          <Modal
+            isVisible={modalIsVisible}
+            toggleVisibility={toggleModalVisibility}
+            modalContent={modalContent}
+          />
+        )}
       </div>
     </div>
   );
