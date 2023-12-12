@@ -1,10 +1,8 @@
 .Home-container {
   display: flex;
   flex-direction: row;
-
   width: 100%;
   height: 100%;
-
   background-color: #FFFFFF;
 }
 
@@ -13,10 +11,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
-  padding: 30px;
-  gap: 15px;
-
+  padding: 2rem;
+  gap: 1rem;
   background-color: #3233FD;
   color: #FFFFFF;
 }
@@ -24,9 +20,7 @@
 .sidebar li {
   display: flex;
   align-items: center;
-
-  gap: 5px;
-
+  gap: 0.5rem;
   cursor: pointer;
 }
 
@@ -37,13 +31,8 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-
-  padding: 30px;
-  gap: 15px;
+  gap: 1rem;
+  
 }
 
 .header {
@@ -51,16 +40,15 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-
-  width: 100%;
-
+  width: 95%;
+  margin: 2rem 1.5rem;
   border: 1px solid #F0F0F0;
   border-radius: 15px;
   box-shadow: 0px 10px 6px #00000029;
 }
 
 .header h1 {
-  padding-left: 15px;
+  padding-left: 1rem;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -70,7 +58,6 @@
 
   .sidebar {
     flex-direction: row;
-
     width: 100%;
   }
 }

@@ -4,7 +4,9 @@ import React, { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { register } from '../../services/customer';
 
-const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegister }) => {
+const Register: React.FC<{ onSuccessRegister: () => void }> = ({
+  onSuccessRegister,
+}) => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
@@ -32,7 +34,7 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegist
     if (!name || !email || !phone || !password) {
       showMessage('All fields are mandatory! Please try again.');
       return;
-    };
+    }
 
     const body = {
       name,
@@ -60,10 +62,12 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegist
         method="post"
         autoComplete="off"
       >
-        <fieldset className='register-fieldset'>
+        <fieldset className="register-fieldset">
           <h2>Register</h2>
           <div className="register-div">
-            <label className="register-label" htmlFor="name">Full name </label>
+            <label className="register-label" htmlFor="name">
+              Full name{' '}
+            </label>
             <input
               className="register-input"
               type="text"
@@ -75,7 +79,9 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegist
             />
           </div>
           <div className="register-div">
-            <label className="register-label" htmlFor="email">Email </label>
+            <label className="register-label" htmlFor="email">
+              Email{' '}
+            </label>
             <input
               className="register-input"
               type="email"
@@ -87,7 +93,9 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegist
             />
           </div>
           <div className="register-div">
-            <label className="register-label" htmlFor="phone">Phone </label>
+            <label className="register-label" htmlFor="phone">
+              Phone{' '}
+            </label>
             <input
               className="register-input"
               type="tel"
@@ -99,7 +107,9 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegist
             />
           </div>
           <div className="register-div">
-            <label className="register-label" htmlFor="password">Password </label>
+            <label className="register-label" htmlFor="password">
+              Password{' '}
+            </label>
             <input
               className="register-input"
               type="password"
@@ -111,15 +121,12 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({ onSuccessRegist
             />
           </div>
         </fieldset>
-        <button
-          className="register-button"
-          type="submit"
-        >
+        <button className="register-button" type="submit">
           Register
         </button>
 
         <span>
-          Already have an account? <Link to='/login'>Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </span>
 
         {error && <p className="error">Error: {error}</p>}
