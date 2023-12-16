@@ -7,9 +7,10 @@ import Withdraw from '../Withdraw';
 import Register from '../Customers/RegisterForm';
 import CustomersList from '../Customers/List';
 import Login from '../Customers/LoginForm';
+
 import { logout } from '../../services/customer';
 
-const Home = () => {
+function Home() {
   const [selectedItem, setSelectedItem] = useState<string>('home');
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
@@ -17,10 +18,12 @@ const Home = () => {
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
+    setSelectedItem('/');
   };
 
   const handleRegisterSuccess = async () => {
     setIsRegistered(true);
+    setSelectedItem('/');
   };
 
   const handleLogout = async () => {
@@ -37,44 +40,55 @@ const Home = () => {
   return (
     <div className="Home-container">
       <div className="sidebar">
-        {isLogged ? (
-          <>
-            <li onClick={() => setSelectedItem('accounts')}>
-              <Users />
-              Accounts
-            </li>
-            <li onClick={() => setSelectedItem('withdraw')}>
-              <DollarSign />
-              Withdraw
-            </li>
-            <li onClick={() => setSelectedItem('customersList')}>
-              <List />
-              Registers
-            </li>
-            <li onClick={handleLogout}>
-              <LogOut />
-              Logout
-
-            </li>
-          </>
-        ) : (
-          <>
-            <li onClick={() => setSelectedItem('register')}>
-              <User />
-              Register
-            </li>
-            <li onClick={() => setSelectedItem('login')}>
-              <LogIn />
-              Login
-            </li>
-          </>
-        )}
+        <ul>
+          {isLogged ? (
+            <>
+              <li onClick={() => setSelectedItem('/')}>
+                <p className="textHeader">Home</p>
+              </li>
+              <li onClick={() => setSelectedItem('accounts')}>
+                <Users />
+                <p className="textHeader">Accounts</p>
+              </li>
+              <li onClick={() => setSelectedItem('withdraw')}>
+                <DollarSign />
+                <p className="textHeader">Withdraw</p>
+              </li>
+              <li onClick={() => setSelectedItem('customersList')}>
+                <List />
+                <p className="textHeader">Registers</p>
+              </li>
+              <li onClick={handleLogout}>
+                <LogOut />
+                <p className="textHeader">Logout</p>
+              </li>
+            </>
+          ) : (
+            <>
+              <li onClick={() => setSelectedItem('register')}>
+                <User />
+                <p className="textHeader">Register</p>
+              </li>
+              <li onClick={() => setSelectedItem('login')}>
+                <LogIn />
+                <p className="textHeader">Login</p>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
 
       <div className="main">
         <div className="header">
-          <h1>Hello, Gustavo</h1>
+          {isLogged ? (
+            <>
+              <h1>Hello, User</h1>
+            </>
+          ) : (
+            <h1>Hello</h1>
+          )}
         </div>
+        {selectedItem === '/' && isLogged}
         {selectedItem === 'register' && (
           <Register onSuccessRegister={handleRegisterSuccess} />
         )}
@@ -87,6 +101,6 @@ const Home = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Home;
