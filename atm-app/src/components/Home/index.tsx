@@ -10,7 +10,7 @@ import Login from '../Customers/LoginForm';
 
 import { logout } from '../../services/customer';
 
-function Home() {
+const Home = () => {
   const [selectedItem, setSelectedItem] = useState<string>('home');
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
