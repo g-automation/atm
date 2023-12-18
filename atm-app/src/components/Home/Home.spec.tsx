@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Home from './index';
+import Home from '.';
 
 describe('Home Component', () => {
   test('renders Home with accounts and withdraw options', () => {
