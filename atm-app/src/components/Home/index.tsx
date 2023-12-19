@@ -20,7 +20,7 @@ import { Modal } from "../Modals/Modal";
 import Withdraw from "../Withdraw";
 
 const Home = () => {
-  const [selectedItem, setSelectedItem] = useState<string>("home");
+  const [selectedItem, setSelectedItem] = useState("home");
   const [isLogged, setIsLogged] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [cookie, setCookie] = useState<string | null>(null);
@@ -56,19 +56,23 @@ const Home = () => {
               </li>
               <li onClick={() => setSelectedItem("accounts")}>
                 <Users />
-                <p className="textHeader">Accounts</p>
+                Accounts
+                 {/*<p className="textHeader">Accounts</p>*/}
               </li>
               <li onClick={() => setSelectedItem("withdraw")}>
                 <DollarSign />
-                <p className="textHeader">Withdraw</p>
+                Withdraw
+                 {/*<p className="textHeader">Withdraw</p>*/}
               </li>
               <li onClick={() => setSelectedItem("customersList")}>
                 <List />
-                <p className="textHeader">Registers</p>
+                Registers
+                 {/*<p className="textHeader">Registers</p>*/}
               </li>
               <li onClick={handleLogout}>
                 <LogOut />
-                <p className="textHeader">Logout</p>
+                Logout
+                 {/*<p className="textHeader">Logout</p>*/}
               </li>
               <li
                 onClick={() => {
@@ -84,11 +88,13 @@ const Home = () => {
             <>
               <li onClick={() => setSelectedItem("register")}>
                 <User />
-                <p className="textHeader">Register</p>
+                Register
+                {/*<p className="textHeader">Register</p>*/}
               </li>
               <li onClick={() => setSelectedItem("login")}>
                 <LogIn />
-                <p className="textHeader">Login</p>
+                Login
+                {/*<p className="textHeader">Login</p>*/}
               </li>
             </>
           )}
