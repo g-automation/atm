@@ -88,7 +88,7 @@ const Home = () => {
             <h1>Hello</h1>
           )}
         </div>
-        {selectedItem === '/' && isLogged}
+        {/* {selectedItem === '/' && isLogged} */}
         {selectedItem === 'register' && (
           <Register onSuccessRegister={handleRegisterSuccess} />
         )}
