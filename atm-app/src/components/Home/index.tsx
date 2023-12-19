@@ -27,10 +27,12 @@ const Home = () => {
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
+    setSelectedItem("/");
   };
 
   const handleRegisterSuccess = async () => {
     setIsRegistered(true);
+    setSelectedItem("/");
   };
 
   const handleLogout = async () => {
@@ -84,7 +86,7 @@ const Home = () => {
   );
 
   return (
-    <div className="Home-container">
+     <div className="Home-container">
       <div className="sidebar">
         {isLogged ? (
           <>
