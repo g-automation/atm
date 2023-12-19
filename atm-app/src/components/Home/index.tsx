@@ -86,53 +86,53 @@ const Home = () => {
   );
 
   return (
-    <div className="Home-container">
+     <div className="Home-container">
       <div className="sidebar">
-          {isLogged ? (
-            <>
-              <li onClick={() => setSelectedItem("accounts")}>
-                <Users />
-                Accounts
-              </li>
-              <li onClick={() => setSelectedItem("withdraw")}>
-                <DollarSign />
-                Withdraw
-              </li>
-              <li onClick={() => setSelectedItem("customersList")}>
-                <List />
-                Registers
-              </li>
-              <li onClick={handleLogout}>
-                <LogOut />
-                Logout
-              </li>
-              <li
-                onClick={() => {
-                  setSelectedItem("useModal");
-                  toggleModalVisibility();
-                }}
-              >
-                <Maximize2 />
-                Modal
-              </li>
-            </>
-          ) : (
-            <>
-              <li onClick={() => setSelectedItem("register")}>
-                <User />
-                Register
-              </li>
-              <li onClick={() => setSelectedItem("login")}>
-                <LogIn />
-                Login
-              </li>
-            </>
-          )}
+        {isLogged ? (
+          <>
+            <li onClick={() => setSelectedItem("accounts")}>
+              <Users />
+              Accounts
+            </li>
+            <li onClick={() => setSelectedItem("withdraw")}>
+              <DollarSign />
+              Withdraw
+            </li>
+            <li onClick={() => setSelectedItem("customersList")}>
+              <List />
+              Registers
+            </li>
+            <li onClick={handleLogout}>
+              <LogOut />
+              Logout
+            </li>
+            <li
+              onClick={() => {
+                setSelectedItem("useModal");
+                toggleModalVisibility();
+              }}
+            >
+              <Maximize2 />
+              Modal
+            </li>
+          </>
+        ) : (
+          <>
+            <li onClick={() => setSelectedItem("register")}>
+              <User />
+              Register
+            </li>
+            <li onClick={() => setSelectedItem("login")}>
+              <LogIn />
+              Login
+            </li>
+          </>
+        )}
       </div>
 
       <div className="main">
         <div className="header">
-              <h1>Hello, User</h1>
+          <h1>Hello, Gustavo</h1>
         </div>
         {selectedItem === "register" && (
           <Register onSuccessRegister={handleRegisterSuccess} />
