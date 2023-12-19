@@ -51,9 +51,11 @@ const Home = () => {
       <div className="sidebar">
           {isLogged ? (
             <>
+              {/*
               <li onClick={() => setSelectedItem("/")}>
                 <p className="textHeader">Home</p>
               </li>
+              */}
               <li onClick={() => setSelectedItem("accounts")}>
                 <Users />
                 Accounts
