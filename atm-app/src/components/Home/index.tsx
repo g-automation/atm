@@ -51,30 +51,21 @@ const Home = () => {
       <div className="sidebar">
           {isLogged ? (
             <>
-              {/*
-              <li onClick={() => setSelectedItem("/")}>
-                <p className="textHeader">Home</p>
-              </li>
-              */}
               <li onClick={() => setSelectedItem("accounts")}>
                 <Users />
                 Accounts
-                 {/*<p className="textHeader">Accounts</p>*/}
               </li>
               <li onClick={() => setSelectedItem("withdraw")}>
                 <DollarSign />
                 Withdraw
-                 {/*<p className="textHeader">Withdraw</p>*/}
               </li>
               <li onClick={() => setSelectedItem("customersList")}>
                 <List />
                 Registers
-                 {/*<p className="textHeader">Registers</p>*/}
               </li>
               <li onClick={handleLogout}>
                 <LogOut />
                 Logout
-                 {/*<p className="textHeader">Logout</p>*/}
               </li>
               <li
                 onClick={() => {
@@ -91,12 +82,10 @@ const Home = () => {
               <li onClick={() => setSelectedItem("register")}>
                 <User />
                 Register
-                {/*<p className="textHeader">Register</p>*/}
               </li>
               <li onClick={() => setSelectedItem("login")}>
                 <LogIn />
                 Login
-                {/*<p className="textHeader">Login</p>*/}
               </li>
             </>
           )}
