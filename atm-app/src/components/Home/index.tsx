@@ -6,17 +6,14 @@ import {
   List,
   LogIn,
   LogOut,
-  Maximize2,
   User,
   Users,
 } from 'react-feather';
-import { useModal } from "../../hooks/useModal";
 import { logout } from "../../services/customer";
 import Accounts from '../Accounts';
 import CustomersList from '../Customers/List';
 import Login from '../Customers/LoginForm';
 import Register from '../Customers/RegisterForm';
-import { Modal } from "../Modals/Modal";
 import Withdraw from '../Withdraw';
 
 const Home = () => {
@@ -51,18 +48,18 @@ const Home = () => {
       <div className="sidebar">
           {isLogged ? (
             <>
-              <li onClick={() => setSelectedItem('/')}>
+              <li onClick={() => setSelectedItem("/")}>
                 <p className="textHeader">Home</p>
               </li>
-              <li onClick={() => setSelectedItem('accounts')}>
+              <li onClick={() => setSelectedItem("accounts")}>
                 <Users />
                 <p className="textHeader">Accounts</p>
               </li>
-              <li onClick={() => setSelectedItem('withdraw')}>
+              <li onClick={() => setSelectedItem("withdraw")}>
                 <DollarSign />
                 <p className="textHeader">Withdraw</p>
               </li>
-              <li onClick={() => setSelectedItem('customersList')}>
+              <li onClick={() => setSelectedItem("customersList")}>
                 <List />
                 <p className="textHeader">Registers</p>
               </li>
@@ -73,11 +70,11 @@ const Home = () => {
             </>
           ) : (
             <>
-              <li onClick={() => setSelectedItem('register')}>
+              <li onClick={() => setSelectedItem("register")}>
                 <User />
                 <p className="textHeader">Register</p>
               </li>
-              <li onClick={() => setSelectedItem('login')}>
+              <li onClick={() => setSelectedItem("login")}>
                 <LogIn />
                 <p className="textHeader">Login</p>
               </li>
@@ -87,24 +84,17 @@ const Home = () => {
 
       <div className="main">
         <div className="header">
-          {isLogged ? (
-            <>
               <h1>Hello, User</h1>
-            </>
-          ) : (
-            <h1>Hello</h1>
-          )}
         </div>
-        {selectedItem === '/' && isLogged}
-        {selectedItem === 'register' && (
+        {selectedItem === "register" && (
           <Register onSuccessRegister={handleRegisterSuccess} />
         )}
-        {selectedItem === 'login' && (
+        {selectedItem === "login" && (
           <Login onSuccessLogin={handleLoginSuccess} />
         )}
-        {selectedItem === 'accounts' && <Accounts />}
-        {selectedItem === 'withdraw' && <Withdraw />}
-        {selectedItem === 'customersList' && <CustomersList />}
+        {selectedItem === "accounts" && <Accounts />}
+        {selectedItem === "withdraw" && <Withdraw />}
+        {selectedItem === "customersList" && <CustomersList />}
       </div>
     </div>
   );
