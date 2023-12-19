@@ -46,6 +46,45 @@ const Home = () => {
     }
   };
 
+  // test modal
+  const { isModalVisible, toggleModalVisibility } = useModal();
+  
+  const modalContent: React.ReactNode = (
+    // modal content
+    <div>
+      <h3>Modal Test</h3>
+      <form>
+        <fieldset>
+          <legend>Form</legend>
+          <div>
+            <label htmlFor="label">Label </label>
+            <input type="text" placeholder="Enter with an input" />
+          </div>
+          <div>
+            <label htmlFor="label">Label </label>
+            <input type="text" placeholder="Enter with an input" />
+          </div>
+          <fieldset>
+            <legend>Choose</legend>
+            <div>
+              <label htmlFor="select">Select </label>
+              <select>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </fieldset>
+          <div>
+            <input type="checkbox" id="check" name="check" />
+            <label htmlFor="check"> Check</label>
+          </div>
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+
   return (
     <div className="Home-container">
       <div className="sidebar">
