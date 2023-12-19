@@ -1,14 +1,23 @@
 import './styles.css';
 
 import React, { useState } from 'react';
-import { Users, DollarSign, List, LogIn, User, LogOut } from 'react-feather';
+import {
+  DollarSign,
+  List,
+  LogIn,
+  LogOut,
+  Maximize2,
+  User,
+  Users,
+} from 'react-feather';
+import { useModal } from "../../hooks/useModal";
+import { logout } from "../../services/customer";
 import Accounts from '../Accounts';
-import Withdraw from '../Withdraw';
-import Register from '../Customers/RegisterForm';
 import CustomersList from '../Customers/List';
 import Login from '../Customers/LoginForm';
-
-import { logout } from '../../services/customer';
+import Register from '../Customers/RegisterForm';
+import { Modal } from "../Modals/Modal";
+import Withdraw from '../Withdraw';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState<string>('home');
@@ -40,7 +49,6 @@ const Home = () => {
   return (
     <div className="Home-container">
       <div className="sidebar">
-        <ul>
           {isLogged ? (
             <>
               <li onClick={() => setSelectedItem('/')}>
@@ -75,7 +83,6 @@ const Home = () => {
               </li>
             </>
           )}
-        </ul>
       </div>
 
       <div className="main">
@@ -88,7 +95,7 @@ const Home = () => {
             <h1>Hello</h1>
           )}
         </div>
-        {/* {selectedItem === '/' && isLogged} */}
+        {selectedItem === '/' && isLogged}
         {selectedItem === 'register' && (
           <Register onSuccessRegister={handleRegisterSuccess} />
         )}
