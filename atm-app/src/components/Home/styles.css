@@ -3,7 +3,7 @@
   flex-direction: row;
   width: 100%;
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .sidebar {
@@ -13,8 +13,8 @@
   align-items: center;
   padding: 2rem;
   gap: 1rem;
-  background-color: #3233FD;
-  color: #FFFFFF;
+  background-color: #3233fd;
+  color: #ffffff;
 }
 
 .sidebar li {
@@ -25,14 +25,13 @@
 }
 
 .sidebar li:hover {
-  color: #05D3AC;
+  color: #05d3ac;
 }
 
 .main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  
 }
 
 .header {
@@ -42,7 +41,7 @@
   align-items: center;
   width: 95%;
   margin: 2rem 1.5rem;
-  border: 1px solid #F0F0F0;
+  border: 1px solid #f0f0f0;
   border-radius: 15px;
   box-shadow: 0px 10px 6px #00000029;
 }

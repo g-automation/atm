@@ -1,83 +1,80 @@
 .Register-container,
 .Login-container {
-    font-family: 'Courier New', Courier, monospace;
-    margin: 2rem 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+  margin: 2rem 1.5rem;
 }
 
 .register-form,
 .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: -5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -5px;
 }
 
 .register-fieldset,
 .login-fieldset {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 85%;
-    margin: 0 1.5rem;
-    border: 1px solid #eaecef;
-    border-radius: 25px;
-    box-shadow: 0px 5px 3px #00000029;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  margin: 0 1.5rem;
+  border: 1px solid #eaecef;
+  border-radius: 25px;
+  box-shadow: 0px 5px 3px #00000029;
 }
 
-h2, span {
-    text-align: center;
+h2,
+span {
+  text-align: center;
 }
-
 
 .register-div,
 .login-div {
-    width: 80%;
-    padding: 0 0.4rem;
-
+  width: 80%;
+  padding: 0 0.4rem;
 }
 
 .register-label,
 .login-label {
-    font-size: 14px;
-
+  font-size: 14px;
 }
 
 .register-input,
 .login-input {
-    margin: 0.5rem 0;
-    padding: 1rem;
-    width: 100%;
-    border: 1px solid #eaecef;
-    border-radius: 5px;
-    box-shadow: 0px 5px 3px #00000029;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid #eaecef;
+  border-radius: 5px;
+  box-shadow: 0px 5px 3px #00000029;
 }
 
 .register-button,
 .login-button {
-    text-align: center;
-    flex: 1;
-    width: 94%;
-    background-color: #3233FD;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    border-radius: 35px;
-    padding: 1rem 1.5rem;
-    margin: 2rem 1.5rem;
+  text-align: center;
+  flex: 1;
+  width: 94%;
+  background-color: #3233fd;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 35px;
+  padding: 1rem 1.5rem;
+  margin: 2rem 1.5rem;
 
-    &:hover {
-        background-color: #ffffff;
-        color: #3233FD;
-        border: 1px solid #3233FD;
-        font-weight: bold;
-    }
+  &:hover {
+    background-color: #ffffff;
+    color: #3233fd;
+    border: 1px solid #3233fd;
+    font-weight: bold;
+  }
 }
 
 .message {
-    display: block;
-    color: #ff4040;
-    text-align: center;
-    font-weight: bold;
+  display: block;
+  color: #ff4040;
+  text-align: center;
+  font-weight: bold;
 }

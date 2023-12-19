@@ -1,16 +1,16 @@
-import './styles.css';
+import "./styles.css";
 
-import React, { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { register } from '../../services/customer';
+import React, { FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
+import { register } from "../../services/customer";
 
 const Register: React.FC<{ onSuccessRegister: () => void }> = ({
   onSuccessRegister,
 }) => {
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,17 +22,17 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
   };
 
   const resetForm = () => {
-    setName('');
-    setEmail('');
-    setPhone('');
-    setPassword('');
+    setName("");
+    setEmail("");
+    setPhone("");
+    setPassword("");
   };
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!name || !email || !phone || !password) {
-      showMessage('All fields are mandatory! Please try again.');
+      showMessage("All fields are mandatory! Please try again.");
       return;
     }
 
@@ -47,10 +47,10 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
       await register(body);
       setError(null);
       resetForm();
-      showMessage('Register successful!');
+      showMessage("Register successful!");
       onSuccessRegister();
     } catch (error: any) {
-      showMessage('Existing email. Try with another email.');
+      showMessage("Existing email. Try with another email.");
     }
   };
 
@@ -66,7 +66,7 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
           <h2>Register</h2>
           <div className="register-div">
             <label className="register-label" htmlFor="name">
-              Full name{' '}
+              Full name{" "}
             </label>
             <input
               className="register-input"
@@ -75,12 +75,12 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="name"
               value={name}
               placeholder="Enter your full name"
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="register-div">
             <label className="register-label" htmlFor="email">
-              Email{' '}
+              Email{" "}
             </label>
             <input
               className="register-input"
@@ -89,12 +89,12 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="email"
               value={email}
               placeholder="Enter your best email"
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="register-div">
             <label className="register-label" htmlFor="phone">
-              Phone{' '}
+              Phone{" "}
             </label>
             <input
               className="register-input"
@@ -103,12 +103,12 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="phone"
               value={phone}
               placeholder="-- ----- ----"
-              onChange={e => setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <div className="register-div">
             <label className="register-label" htmlFor="password">
-              Password{' '}
+              Password{" "}
             </label>
             <input
               className="register-input"
@@ -117,7 +117,7 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="password"
               value={password}
               placeholder="Create an access password"
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
         </fieldset>
