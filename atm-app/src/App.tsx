@@ -1,10 +1,7 @@
 import './App.css';
 
 import React from 'react';
-import {
-  Routes,
-  Route
-} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Home from './components/Home';
 import Register from './components/Customers/RegisterForm';
@@ -17,12 +14,15 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='register' element={<Register onSuccessRegister={() => { }} />} />
-        <Route path='login' element={<Login onSuccessLogin={() => { }} />} />
-        <Route path='customers' element={<CustomersList />} />
-        <Route path='accounts' element={<Accounts />} />
-        <Route path='withdraw' element={<Withdraw />} />
+        <Route path="/" element={<Home />} />
+        <Route
+          path="register"
+          element={<Register onSuccessRegister={() => {}} />}
+        />
+        <Route path="login" element={<Login onSuccessLogin={() => {}} />} />
+        <Route path="customers" element={<CustomersList />} />
+        <Route path="accounts" element={<Accounts />} />
+        <Route path="withdraw" element={<Withdraw />} />
       </Routes>
     </div>
   );

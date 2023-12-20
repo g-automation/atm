@@ -11,10 +11,19 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 2rem;
+
+  padding: 1.8rem 1rem;
   gap: 1rem;
-  background-color: #3233fd;
-  color: #ffffff;
+
+  background-color: #3233FD;
+  color: #FFFFFF;
+}
+svg {
+  height: 1rem;
+  width: 1rem;
+}
+.textHeader {
+  font-size: 12px;
 }
 
 .sidebar li {
