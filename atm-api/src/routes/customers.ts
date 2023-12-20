@@ -1,16 +1,18 @@
 import { Router } from 'express';
 
 import {
+  getCustomer,
   getAllCustomers,
-  deleteCustomer,
   updateCustomer,
+  deleteCustomer,
 } from '../controllers/customers';
-import { isAuthenticated } from '../middlewares/customers';
+//import { isAuthenticated } from '../middlewares/customers';
 
 const router = Router();
 
 router.get('/', getAllCustomers);
-router.delete('/delete/:id', isAuthenticated, deleteCustomer);
-router.patch('/:id', isAuthenticated, updateCustomer);
+router.get('/:email', getCustomer);
+router.patch('/:id', updateCustomer);
+router.delete('/:id', deleteCustomer);
 
 export default router;

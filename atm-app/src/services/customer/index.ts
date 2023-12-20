@@ -2,10 +2,53 @@ import axios from 'axios';
 
 const API_URL = process.env.API_URL ?? 'http://localhost:3001/';
 
+export const getCustomer = async (email: string) => {
+  try {
+    const ENDPOINT = `customers/${email}`;
+    const response = await axios.get(`${API_URL}${ENDPOINT}`);
+
+    console.log(response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error.response.data;
+  }
+};
+
 export const getAllCustomers = async () => {
   try {
     const ENDPOINT = `customers`;
     const response = await axios.get(`${API_URL}${ENDPOINT}`);
+
+    console.log(response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error.response.data;
+  }
+};
+
+export const updateCustomer = async (id: string, body: {
+  name: string;
+  email: string;
+  phone: string;
+}) => {
+  try {
+    const ENDPOINT = `customers/${id}`;
+    const response = await axios.patch(`${API_URL}${ENDPOINT}`, body);
+
+    console.log(response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw error.response.data;
+  }
+};
+
+export const deleteCustomer = async (id: string) => {
+  try {
+    const ENDPOINT = `customers/${id}`;
+    const response = await axios.delete(`${API_URL}${ENDPOINT}`);
 
     console.log(response.data);
     return response.data;
