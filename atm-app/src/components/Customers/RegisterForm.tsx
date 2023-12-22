@@ -75,7 +75,7 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="name"
               value={name}
               placeholder="Enter your full name"
-              onChange={(e) => setName(e.target.value)}
+              onChange={e => setName(e.target.value)}
             />
           </div>
           <div className="register-div">
@@ -89,7 +89,7 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="email"
               value={email}
               placeholder="Enter your best email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
           <div className="register-div">
@@ -103,7 +103,7 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="phone"
               value={phone}
               placeholder="-- ----- ----"
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={e => setPhone(e.target.value)}
             />
           </div>
           <div className="register-div">
@@ -117,7 +117,7 @@ const Register: React.FC<{ onSuccessRegister: () => void }> = ({
               name="password"
               value={password}
               placeholder="Create an access password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
             />
           </div>
         </fieldset>
