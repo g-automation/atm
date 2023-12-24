@@ -49,7 +49,7 @@ const Withdraw: React.FC = () => {
         onChange={e => setAmount(parseInt(e.target.value))}
         placeholder="Enter amount"
       />
-      <button className="button" onClick={handleWithdraw}>
+      <button className="button-withdraw" onClick={handleWithdraw}>
         Withdraw
       </button>
 

@@ -132,7 +132,7 @@ const Home = () => {
 
       <div className="main">
         <div className="header">
-          <h1>Hello, Gustavo</h1>
+          <h1>ATM BANK</h1>
         </div>
         {selectedItem === "register" && (
           <Register onSuccessRegister={handleRegisterSuccess} />

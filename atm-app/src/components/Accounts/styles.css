@@ -4,27 +4,33 @@
   justify-content: flex-start;
   align-items: flex-start;
   overflow-y: scroll;
-
   width: 100%;
   height: 100%;
-
-  padding: 15px;
-  gap: 15px;
+  padding: 8px;
+}
+.div-buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 
-.button {
+.button-create {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  padding: 15px;
+  padding: 1rem;
   color: #FFFFFF;
   font-weight: bold;
   background-color: #3233FD;
   border: 0px;
   border-radius: 35px;
-
   cursor: pointer;
+  &:hover {
+    background-color: #ffffff;
+    color: #3233fd;
+    border: 1px solid #3233fd;
+    font-weight: bold;
+  }
 }
 
 .button-delete-all {
@@ -32,8 +38,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  width: 25%;
-  padding: 15px;
+  padding: 1rem;
   color: #FFFFFF;
   font-weight: bold;
   background-color: #9b111e;

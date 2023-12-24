@@ -1,13 +1,13 @@
-import './styles.css';
+import "./styles.css";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   createAccount,
   deleteAccount,
   deleteAllAccounts,
   getAccounts,
-} from '../../services/atm';
-import { AlertCircle, Copy, Delete, Edit } from 'react-feather';
+} from "../../services/atm";
+import { AlertCircle, Copy, Delete, Edit } from "react-feather";
 
 const Accounts: React.FC = () => {
   const [accounts, setAccounts] = useState<any[]>([]);
@@ -50,7 +50,7 @@ const Accounts: React.FC = () => {
       const _accounts = await getAccounts();
       if (
         window.confirm(
-          'Do you really want to permanently delete all accounts? This action is irreversible!',
+          "Do you really want to permanently delete all accounts? This action is irreversible!",
         ) === false
       ) {
         setAccounts(_accounts);
@@ -78,9 +78,6 @@ const Accounts: React.FC = () => {
 
   return (
     <div className="Accounts-container">
-      <button className="button" onClick={handleCreateAccount}>
-        Create Account
-      </button>
       {error && <p className="error">Error: {error}</p>}
 
       {accounts.length > 0 && (
@@ -114,10 +111,10 @@ const Accounts: React.FC = () => {
                     </button>
                   </p>
                   <span>
-                    Balance:{' '}
-                    {balance.toLocaleString('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
+                    Balance:{" "}
+                    {balance.toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
                     })}
                   </span>
                 </li>
@@ -125,15 +122,20 @@ const Accounts: React.FC = () => {
           </ul>
         </div>
       )}
-      <button
-        className="button-delete-all"
-        onClick={handleDeleteAllAccounts}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >
-        {onMouseOverButton && <AlertCircle />}
-        Delete all Accounts
-      </button>
+      <div className="div-buttons">
+        <button className="button-create" onClick={handleCreateAccount}>
+          Create Account
+        </button>
+        <button
+          className="button-delete-all"
+          onClick={handleDeleteAllAccounts}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        >
+          {onMouseOverButton && <AlertCircle />}
+          Delete all Accounts
+        </button>
+      </div>
     </div>
   );
 };
