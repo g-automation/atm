@@ -1,4 +1,5 @@
 import "./styles.css";
+import atmlogo from "../../Assets/atm-clipart-2018-20 (2).png";
 
 import React, { useState } from "react";
 import {
@@ -48,7 +49,7 @@ const Home = () => {
 
   // test modal
   const { isModalVisible, toggleModalVisibility } = useModal();
-  
+
   const modalContent: React.ReactNode = (
     // modal content
     <div>
@@ -86,7 +87,7 @@ const Home = () => {
   );
 
   return (
-     <div className="Home-container">
+    <div className="Home-container">
       <div className="sidebar">
         {isLogged ? (
           <>
@@ -132,6 +133,7 @@ const Home = () => {
 
       <div className="main">
         <div className="header">
+          <img className="img-logo" src={atmlogo} alt="logo-ATM" />
           <h1>ATM BANK</h1>
         </div>
         {selectedItem === "register" && (

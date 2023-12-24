@@ -86,7 +86,7 @@ const Accounts: React.FC = () => {
           <ul>
             {accounts.length > 0 &&
               accounts.map(({ accountNumber, balance }) => (
-                <li key={accountNumber}>
+                <li className="account-list" key={accountNumber}>
                   <p>
                     Account Number: {accountNumber}
                     <button

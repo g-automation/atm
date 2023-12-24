@@ -1,10 +1,10 @@
-import './styles.css';
+import "./styles.css";
 
-import React, { useState } from 'react';
-import { withdraw } from '../../services/atm';
+import React, { useState } from "react";
+import { withdraw } from "../../services/atm";
 
 const Withdraw: React.FC = () => {
-  const [accountNumber, setAccountNumber] = useState<string>('');
+  const [accountNumber, setAccountNumber] = useState<string>("");
   const [amount, setAmount] = useState<number>(0);
   const [balance, setBalance] = useState<number>(0);
   const [banknotes, setBanknotes] = useState<Object>({});
@@ -27,10 +27,10 @@ const Withdraw: React.FC = () => {
     <div className="Withdraw-container">
       <div>
         <h3>
-          Balance:{' '}
-          {balance.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
+          Balance:{" "}
+          {balance.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
           })}
         </h3>
       </div>
