@@ -1,8 +1,9 @@
-import axios from 'axios';
+import { Customer } from '../../types/customers';
+import axios, { AxiosResponse } from 'axios';
 
 const API_URL = process.env.API_URL ?? 'http://localhost:3001/';
 
-export const getCustomer = async (email: string) => {
+export const getCustomer = async (email: string): Promise<AxiosResponse<Customer>> => {
   try {
     const ENDPOINT = `customers/${email}`;
     const response = await axios.get(`${API_URL}${ENDPOINT}`);
@@ -32,10 +33,10 @@ export const updateCustomer = async (id: string, body: {
   name: string;
   email: string;
   phone: string;
-}) => {
+}): Promise<AxiosResponse<Customer>> => {
   try {
     const ENDPOINT = `customers/${id}`;
-    const response = await axios.patch(`${API_URL}${ENDPOINT}`, body);
+    const response = await axios.put(`${API_URL}${ENDPOINT}`, body);
 
     console.log(response.data);
     return response.data;
@@ -45,7 +46,7 @@ export const updateCustomer = async (id: string, body: {
   }
 };
 
-export const deleteCustomer = async (id: string) => {
+export const deleteCustomer = async (id: string): Promise<AxiosResponse<Customer>> => {
   try {
     const ENDPOINT = `customers/${id}`;
     const response = await axios.delete(`${API_URL}${ENDPOINT}`);
@@ -63,7 +64,7 @@ export const register = async (body: {
   email: string;
   phone: string;
   password: string;
-}) => {
+}): Promise<AxiosResponse<Customer>> => {
   try {
     const ENDPOINT = `authentication/register`;
     const response = await axios.post(`${API_URL}${ENDPOINT}`, body);
@@ -79,7 +80,7 @@ export const register = async (body: {
 export const login = async (body: {
   email: string;
   password: string;
-}) => {
+}): Promise<AxiosResponse<Customer>> => {
   try {
     const ENDPOINT = `authentication/login`;
     const response = await axios.post(`${API_URL}${ENDPOINT}`, body);

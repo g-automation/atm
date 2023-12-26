@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Edit, Delete } from "react-feather";
 import {
     getAllCustomers,
@@ -18,13 +18,14 @@ interface Customer {
 
 const CustomersList: React.FC = () => {
     const [selectedItem, setSelectedItem] = useState("list");
-    const [customer, setCustomer] = useState<any>(null);
-    const [customers, setCustomers] = useState<Customer[]>([]);
+    const [customer, setCustomer] = useState<any[]>([]);
+    const [customers, setCustomers] = useState([] as Customer[]);
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [selectedName, setSelectedName] = useState("");
     const [selectedEmail, setSelectedEmail] = useState("");
     const [selectedPhone, setSelectedPhone] = useState("");
-    const [showList, setShowList] = useState(false);
+    const [isCustomerSectionVisible, setIsCustomerSectionVisible] = useState(true);
+    const [isCustomersSectionVisible, setIsCustomersSectionVisible] = useState(true);
     const [message, setMessage] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -35,7 +36,7 @@ const CustomersList: React.FC = () => {
         }, 3000);
     };
 
-    const handleCustomers = async () => {
+    const handleGetAllCustomers = async () => {
         try {
             const data = await getAllCustomers();
             if (data) {
@@ -48,13 +49,15 @@ const CustomersList: React.FC = () => {
         }
     };
 
-    const handleSearchCustomerByEmail = async (email: string) => {
+    const handleGetCustomerByEmail = async (email: string) => {
         try {
-            const data = await getCustomer(email);
-            if (!data) {
-                showMessage(`Email "${email}" not found!`);
+
+            const customer = await getCustomer(email);
+            if (!customer || email === "") {
+                showMessage(`Email ${email} Not found!`);
+                setCustomer([]);
             } else {
-                setCustomer(data.customer);
+                setCustomer([customer]);
             }
 
             setError(null);
@@ -71,14 +74,31 @@ const CustomersList: React.FC = () => {
                 phone: selectedPhone || "",
             };
 
-            if (!body.name || !body.email || !body.phone) {
-                showMessage("All fields are mandatory! Please try again.");
-            };
+            const emptyFields = [];
+
+            if (!body.name) {
+                emptyFields.push("Name");
+            }
+
+            if (!body.email) {
+                emptyFields.push("Email");
+            }
+
+            if (!body.phone) {
+                emptyFields.push("Phone");
+            }
+
+            if (emptyFields.length > 0) {
+                showMessage(
+                    `The field (${emptyFields.join(", ")}) is required! Please try again.`
+                );
+                return;
+            }
 
             try {
                 await updateCustomer(selectedId, body);
                 showMessage("Customer updated successfully.");
-                await handleCustomers();
+                handleGetAllCustomers();
 
                 setError(null);
             } catch (error: any) {
@@ -91,7 +111,7 @@ const CustomersList: React.FC = () => {
         try {
             await deleteCustomer(id);
             showMessage("Customer deleted successfully.");
-            handleCustomers();
+            handleGetAllCustomers();
 
             setError(null);
         } catch (error: any) {
@@ -101,7 +121,7 @@ const CustomersList: React.FC = () => {
 
     // reusable modal
     const { isModalVisible, toggleModalVisibility } = useModal();
-    const modalContent: React.ReactNode = (
+    const modalContent = (
         <div className="Edit-container">
             <form className="edit-form"
                 onSubmit={(e) => e.preventDefault()}
@@ -153,96 +173,130 @@ const CustomersList: React.FC = () => {
     );
 
     useEffect(() => {
-        if (showList) {
-            handleCustomers();
-        }
-    }, [showList]);
+    }, []);
 
     return (
-        <div className="Customers-container">
-            {!showList && (
-                <div className="search-div">
-                    <input
-                        className="search-input"
-                        type="text"
-                        value={selectedEmail}
-                        placeholder="Enter with a registered email"
-                        onChange={(e) => setSelectedEmail(e.target.value)}
-                    />
-                    <button
-                        className="search-button"
-                        onClick={() => handleSearchCustomerByEmail(selectedEmail)}
-                    >
-                        Search Register
-                    </button>
+        <div className="List-container">
+            <div className="list-contents-one">
+                <form
+                    className="search-form"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleGetCustomerByEmail(selectedEmail);
+                    }}
+                >
+                    <div className="search-div">
+                        <input
+                            className="search-input"
+                            type="text"
+                            value={selectedEmail}
+                            placeholder="Enter with a registered email"
+                            onChange={(e) => setSelectedEmail(e.target.value)}
+                        />
+                        <button
+                            className="search-button"
+                            title="Search register"
+                            type="submit"
+                        >
+                            Search Register
+                        </button>
+                    </div>
+                </form>
 
-                    {customer && (
-                        <div className="list-one">
-                            <h3>Register:</h3>
-                            <ul>
-                                <ol>Name: {customer.name}</ol>
-                                <ol>Email: {customer.email}</ol>
-                                <ol>Phone: {customer.phone}</ol>
-                            </ul>
-                            {message && <p className="message">{message}</p>}
-                        </div>
-                    )}
-                    <button
-                        className="search-all-button"
-                        onClick={() => setShowList(true)}
-                    >
-                        List all Registers
-                    </button>
-                </div>
-
-            )}
-
-            {showList && (
-                <div>
-                    {customers.length > 0 && (
-                        <div className="list-all">
-                            <h3>Registers list:</h3>
-                            {customers.map((customer) => (
-                                <ul key={customer._id}>
-                                    <li>Id: {customer._id}
-                                        <button
-                                            className="icon-edit"
-                                            type="button"
-                                            title="Edit customer"
-                                            onClick={() => {
-                                                setSelectedId(customer._id);
-                                                setSelectedName(customer.name);
-                                                setSelectedEmail(customer.email);
-                                                setSelectedPhone(customer.phone);
-                                                setSelectedItem("useModal"); // reusable modal
-                                                toggleModalVisibility(); // reusable modal
-                                            }}
-                                        >
-                                            <Edit />
-                                        </button>
-                                        <button
-                                            className="icon-delete"
-                                            type="button"
-                                            title="Delete Customer"
-                                            onClick={() => handleDeleteCustomer(customer._id)}
-                                        >
-                                            <Delete />
-                                        </button>
-                                    </li>
-                                    <ol>Name: {customer.name}</ol>
-                                    <ol>Email: {customer.email}</ol>
-                                    <ol>Phone: {customer.phone}</ol>
-                                    <br />
+                {isCustomerSectionVisible && (
+                    <section>
+                        {customer.length > 0 && (
+                            <div className="list-one">
+                                <button
+                                    className="close-section-button"
+                                    type="reset"
+                                    title="Close"
+                                    onClick={() => setIsCustomerSectionVisible(!isCustomerSectionVisible)}
+                                >
+                                    &times;
+                                </button>
+                                <h3>Register:</h3>
+                                <ul>
+                                    {customer.map((customer) => (
+                                        <li key={customer._id}>
+                                            <ol>Name: {customer.name}</ol>
+                                            <ol>Email: {customer.email}</ol>
+                                            <ol>Phone: {customer.phone}</ol>
+                                        </li>
+                                    ))}
                                 </ul>
-                            ))}
-                            {
-                                (message && <p className="message">{message}</p>) ||
-                                (error && <p>Error when listing customers: {error}</p>)
-                            }
-                        </div>
-                    )}
-                </div>
-            )}
+                            </div>
+                        )}
+                        {message && <p className="message">{message}</p>}
+                    </section>
+                )}
+            </div>
+
+            <div className="list-contents-all">
+                <button
+                    className="search-all-button"
+                    type="button"
+                    title="Search all registers"
+                    onClick={handleGetAllCustomers}
+                >
+                    Search all Registers
+                </button>
+                {isCustomersSectionVisible && (
+                    <section>
+                        {customers.length > 0 && (
+                            <div className="list-all">
+                                <button
+                                    className="close-section-button"
+                                    type="reset"
+                                    title="Close"
+                                    onClick={() => setIsCustomersSectionVisible(!isCustomersSectionVisible)}
+                                >
+                                    &times;
+                                </button>
+                                <h3>Registers list:</h3>
+                                {customers.map((customer) => (
+                                    <ul key={customer._id}>
+                                        <li>Id: {customer._id}
+                                            <button
+                                                className="icon-edit"
+                                                type="button"
+                                                title="Edit customer"
+                                                onClick={() => {
+                                                    setSelectedId(customer._id);
+                                                    setSelectedName(customer.name);
+                                                    setSelectedEmail(customer.email);
+                                                    setSelectedPhone(customer.phone);
+                                                    setSelectedItem("useModal"); // reusable modal
+                                                    toggleModalVisibility(); // reusable modal
+                                                }}
+                                            >
+                                                <Edit />
+                                            </button>
+                                            <button
+                                                className="icon-delete"
+                                                type="button"
+                                                title="Delete Customer"
+                                                onClick={() => handleDeleteCustomer(customer._id)}
+                                            >
+                                                <Delete />
+                                            </button>
+                                        </li>
+                                        <ol>Name: {customer.name}</ol>
+                                        <ol>Email: {customer.email}</ol>
+                                        <ol>Phone: {customer.phone}</ol>
+                                        <br />
+                                    </ul>
+                                ))}
+                                {
+                                    (message && <p className="message">{message}</p>) ||
+                                    (error && <p>Error: {error}</p>)
+                                }
+                            </div>
+                        )}
+                    </section>
+                )}
+
+            </div>
 
             {/* reusable modal */}
             {selectedItem === "useModal" && (

@@ -12,7 +12,7 @@ const router = Router();
 
 router.get('/', getAllCustomers);
 router.get('/:email', getCustomer);
-router.patch('/:id', updateCustomer);
+router.put('/:id', updateCustomer);
 router.delete('/:id', deleteCustomer);
 
 export default router;
