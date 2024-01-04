@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "install:api": "cd atm-api && npm install",
     "install:app": "cd atm-app && npm install",
-    "postinstall": "run-p install:*",
-    "prepare": "npm run install:api && npm run install:app && cd atm-app && npm run build && husky install",
+    "postinstall": "husky install && run-p install:*",
+    "prepare": "husky install",
     "commit": "npm run install:api && npm run install:app && cd atm-app && npm run build"
   },
   "keywords": [],
