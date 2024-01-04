@@ -1,7 +1,7 @@
-import "./styles.css";
-import atmlogo from "../../Assets/atm-clipart-2018-20 (2).png";
+import './styles.css';
+import atmlogo from '../../Assets/atm-clipart-2018-20 (2).png';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   DollarSign,
   List,
@@ -10,30 +10,30 @@ import {
   Maximize2,
   User,
   Users,
-} from "react-feather";
-import { useModal } from "../../hooks/useModal";
-import { logout } from "../../services/customer";
-import Accounts from "../Accounts";
-import CustomersList from "../Customers/List";
-import Login from "../Customers/LoginForm";
-import Register from "../Customers/RegisterForm";
-import { Modal } from "../Modals/Modal";
-import Withdraw from "../Withdraw";
+} from 'react-feather';
+import { useModal } from '../../hooks/useModal';
+import { logout } from '../../services/customer';
+import Accounts from '../Accounts';
+import CustomersList from '../Customers/List';
+import Login from '../Customers/LoginForm';
+import Register from '../Customers/RegisterForm';
+import { Modal } from '../Modals/Modal';
+import Withdraw from '../Withdraw';
 
 const Home = () => {
-  const [selectedItem, setSelectedItem] = useState("home");
+  const [selectedItem, setSelectedItem] = useState('home');
   const [isLogged, setIsLogged] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [cookie, setCookie] = useState<string | null>(null);
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
-    setSelectedItem("/");
+    setSelectedItem('/');
   };
 
   const handleRegisterSuccess = async () => {
     setIsRegistered(true);
-    setSelectedItem("/");
+    setSelectedItem('/');
   };
 
   const handleLogout = async () => {
@@ -41,9 +41,9 @@ const Home = () => {
       await logout();
       setCookie(null);
       setIsLogged(false); //logged out
-      console.log("Logout successful:", cookie);
+      console.log('Logout successful:', cookie);
     } catch (error) {
-      console.error("Logout failed:", error);
+      console.error('Logout failed:', error);
     }
   };
 
@@ -91,15 +91,15 @@ const Home = () => {
       <div className="sidebar">
         {isLogged ? (
           <>
-            <li onClick={() => setSelectedItem("accounts")}>
+            <li onClick={() => setSelectedItem('accounts')}>
               <Users />
               Accounts
             </li>
-            <li onClick={() => setSelectedItem("withdraw")}>
+            <li onClick={() => setSelectedItem('withdraw')}>
               <DollarSign />
               Withdraw
             </li>
-            <li onClick={() => setSelectedItem("customersList")}>
+            <li onClick={() => setSelectedItem('customersList')}>
               <List />
               Registers
             </li>
@@ -109,7 +109,7 @@ const Home = () => {
             </li>
             <li
               onClick={() => {
-                setSelectedItem("useModal");
+                setSelectedItem('useModal');
                 toggleModalVisibility();
               }}
             >
@@ -119,11 +119,11 @@ const Home = () => {
           </>
         ) : (
           <>
-            <li onClick={() => setSelectedItem("register")}>
+            <li onClick={() => setSelectedItem('register')}>
               <User />
               Register
             </li>
-            <li onClick={() => setSelectedItem("login")}>
+            <li onClick={() => setSelectedItem('login')}>
               <LogIn />
               Login
             </li>
@@ -136,16 +136,16 @@ const Home = () => {
           <img className="img-logo" src={atmlogo} alt="logo-ATM" />
           <h1>ATM BANK</h1>
         </div>
-        {selectedItem === "register" && (
+        {selectedItem === 'register' && (
           <Register onSuccessRegister={handleRegisterSuccess} />
         )}
-        {selectedItem === "login" && (
+        {selectedItem === 'login' && (
           <Login onSuccessLogin={handleLoginSuccess} />
         )}
-        {selectedItem === "accounts" && <Accounts />}
-        {selectedItem === "withdraw" && <Withdraw />}
-        {selectedItem === "customersList" && <CustomersList />}
-        {selectedItem === "useModal" && (
+        {selectedItem === 'accounts' && <Accounts />}
+        {selectedItem === 'withdraw' && <Withdraw />}
+        {selectedItem === 'customersList' && <CustomersList />}
+        {selectedItem === 'useModal' && (
           <Modal
             isVisible={isModalVisible}
             toggleVisibility={toggleModalVisibility}

@@ -1,13 +1,13 @@
-import "./styles.css";
+import './styles.css';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   createAccount,
   deleteAccount,
   deleteAllAccounts,
   getAccounts,
-} from "../../services/atm";
-import { AlertCircle, Copy, Delete, Edit } from "react-feather";
+} from '../../services/atm';
+import { AlertCircle, Copy, Delete, Edit } from 'react-feather';
 
 const Accounts: React.FC = () => {
   const [accounts, setAccounts] = useState<any[]>([]);
@@ -50,7 +50,7 @@ const Accounts: React.FC = () => {
       const _accounts = await getAccounts();
       if (
         window.confirm(
-          "Do you really want to permanently delete all accounts? This action is irreversible!",
+          'Do you really want to permanently delete all accounts? This action is irreversible!',
         ) === false
       ) {
         setAccounts(_accounts);
@@ -111,10 +111,10 @@ const Accounts: React.FC = () => {
                     </button>
                   </p>
                   <span>
-                    Balance:{" "}
-                    {balance.toLocaleString("pt-BR", {
-                      style: "currency",
-                      currency: "BRL",
+                    Balance:{' '}
+                    {balance.toLocaleString('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL',
                     })}
                   </span>
                 </li>

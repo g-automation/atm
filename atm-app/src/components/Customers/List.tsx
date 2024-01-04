@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { getAllCustomers } from "../../services/customer";
-import "./styles.css";
+import React, { useState, useEffect } from 'react';
+import { getAllCustomers } from '../../services/customer';
+import './styles.css';
 
 interface Customer {
   _id: string;
@@ -19,7 +19,7 @@ const CustomersList: React.FC = () => {
       if (data) {
         setCustomers(data.customers);
       } else {
-        setError("No data found.");
+        setError('No data found.');
       }
       setError(null);
     } catch (error: any) {
