@@ -1,14 +1,14 @@
-import "./App.css";
+import './App.css';
 
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import Home from "./components/Home";
-import Register from "./components/Customers/RegisterForm";
-import Login from "./components/Customers/LoginForm";
-import Accounts from "./components/Accounts";
-import Withdraw from "./components/Withdraw";
-import CustomersList from "./components/Customers/List";
+import Home from './components/Home';
+import Register from './components/Customers/RegisterForm';
+import Login from './components/Customers/LoginForm';
+import Accounts from './components/Accounts';
+import Withdraw from './components/Withdraw';
+import CustomersList from './components/Customers/List';
 
 function App() {
   return (

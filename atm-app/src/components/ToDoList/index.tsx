@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 interface Todo {
   text: string;
@@ -8,7 +8,7 @@ interface Todo {
 const ToDoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const [inputTodo, setInputTodo] = useState<string>("");
+  const [inputTodo, setInputTodo] = useState<string>('');
 
   const [isButtonMarked, setIsButtonMarked] = useState<boolean>(false);
 
@@ -17,7 +17,7 @@ const ToDoList = () => {
       ...todos,
       { text: inputTodo as string, completed: !isButtonMarked },
     ]);
-    setInputTodo("");
+    setInputTodo('');
   };
 
   const handleCompleteTodo = (todoIndex: number) => {
@@ -43,10 +43,10 @@ const ToDoList = () => {
       <button onClick={handleAddTodo}>Add</button>
       <ul>
         {todos.map((todo, i) => (
-          <li key={i} className={todo.completed ? "completed" : ""}>
+          <li key={i} className={todo.completed ? 'completed' : ''}>
             {todo.text}
             <button onClick={() => handleCompleteTodo(i)}>
-              {todo.completed ? "Mark" : "Cutting"}
+              {todo.completed ? 'Mark' : 'Cutting'}
             </button>
             <button onClick={() => handleRemoveTodo(i)} title="Delete">
               <i className="fas fa-trash">Delete</i>

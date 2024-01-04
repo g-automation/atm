@@ -1,14 +1,14 @@
-import "./styles.css";
+import './styles.css';
 
-import React, { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
-import { login } from "../../services/customer";
+import React, { FormEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { login } from '../../services/customer';
 
 const Login: React.FC<{ onSuccessLogin: () => void }> = ({
   onSuccessLogin,
 }) => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -20,15 +20,15 @@ const Login: React.FC<{ onSuccessLogin: () => void }> = ({
   };
 
   const resetForm = () => {
-    setEmail("");
-    setPassword("");
+    setEmail('');
+    setPassword('');
   };
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!email || !password) {
-      showMessage("Please fill in all fields");
+      showMessage('Please fill in all fields');
       return;
     }
 
@@ -41,10 +41,10 @@ const Login: React.FC<{ onSuccessLogin: () => void }> = ({
       await login(body);
       setError(null);
       resetForm();
-      showMessage("Login successful!");
+      showMessage('Login successful!');
       onSuccessLogin();
     } catch (error: any) {
-      showMessage("Invalid email or password. Please try again.");
+      showMessage('Invalid email or password. Please try again.');
     }
   };
 
@@ -60,7 +60,7 @@ const Login: React.FC<{ onSuccessLogin: () => void }> = ({
           <h2>Login</h2>
           <div className="login-div">
             <label className="login-label" htmlFor="email">
-              Email{" "}
+              Email{' '}
             </label>
             <input
               className="login-input"
@@ -74,7 +74,7 @@ const Login: React.FC<{ onSuccessLogin: () => void }> = ({
           </div>
           <div className="login-div">
             <label className="login-label" htmlFor="password">
-              Password{" "}
+              Password{' '}
             </label>
             <input
               className="login-input"

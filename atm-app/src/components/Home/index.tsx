@@ -1,6 +1,6 @@
-import "./styles.css";
+import './styles.css';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   DollarSign,
   List,
@@ -10,33 +10,32 @@ import {
   User,
   Users,
   AlignLeft,
-} from "react-feather";
-import { useModal } from "../../hooks/useModal";
-import { logout } from "../../services/customer";
-import Accounts from "../Accounts";
-import CustomersList from "../Customers/List";
-import Login from "../Customers/LoginForm";
-import Register from "../Customers/RegisterForm";
-import { Modal } from "../Modals/Modal";
-import Withdraw from "../Withdraw";
-import ToDoList from "../ToDoList";
-import MyCalendar from "../MyCalendar/MyCalendar";
-
+} from 'react-feather';
+import { useModal } from '../../hooks/useModal';
+import { logout } from '../../services/customer';
+import Accounts from '../Accounts';
+import CustomersList from '../Customers/List';
+import Login from '../Customers/LoginForm';
+import Register from '../Customers/RegisterForm';
+import { Modal } from '../Modals/Modal';
+import Withdraw from '../Withdraw';
+import ToDoList from '../ToDoList';
+import MyCalendar from '../MyCalendar/MyCalendar';
 
 const Home = () => {
-  const [selectedItem, setSelectedItem] = useState("home");
+  const [selectedItem, setSelectedItem] = useState('home');
   const [isLogged, setIsLogged] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [cookie, setCookie] = useState<string | null>(null);
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
-    setSelectedItem("/");
+    setSelectedItem('/');
   };
 
   const handleRegisterSuccess = async () => {
     setIsRegistered(true);
-    setSelectedItem("/");
+    setSelectedItem('/');
   };
 
   const handleLogout = async () => {
@@ -44,10 +43,10 @@ const Home = () => {
       await logout();
       setCookie(null);
       setIsLogged(false); //logged out
-      setSelectedItem("login");
-      console.log("Logout successful:", cookie);
+      setSelectedItem('login');
+      console.log('Logout successful:', cookie);
     } catch (error) {
-      console.error("Logout failed:", error);
+      console.error('Logout failed:', error);
     }
   };
 
@@ -95,15 +94,15 @@ const Home = () => {
       <div className="sidebar">
         {isLogged ? (
           <>
-            <li onClick={() => setSelectedItem("accounts")}>
+            <li onClick={() => setSelectedItem('accounts')}>
               <Users />
               Accounts
             </li>
-            <li onClick={() => setSelectedItem("withdraw")}>
+            <li onClick={() => setSelectedItem('withdraw')}>
               <DollarSign />
               Withdraw
             </li>
-            <li onClick={() => setSelectedItem("customersList")}>
+            <li onClick={() => setSelectedItem('customersList')}>
               <List />
               Registers
             </li>
@@ -111,17 +110,17 @@ const Home = () => {
               <LogOut />
               Logout
             </li>
-            <li onClick={() => setSelectedItem("ToDoList")}>
+            <li onClick={() => setSelectedItem('ToDoList')}>
               <AlignLeft />
               ToDoList
             </li>
-            <li onClick={() => setSelectedItem("MyCalendar")}>
+            <li onClick={() => setSelectedItem('MyCalendar')}>
               <AlignLeft />
-             Calendar
+              Calendar
             </li>
             <li
               onClick={() => {
-                setSelectedItem("useModal");
+                setSelectedItem('useModal');
                 toggleModalVisibility();
               }}
             >
@@ -131,11 +130,11 @@ const Home = () => {
           </>
         ) : (
           <>
-            <li onClick={() => setSelectedItem("register")}>
+            <li onClick={() => setSelectedItem('register')}>
               <User />
               Register
             </li>
-            <li onClick={() => setSelectedItem("login")}>
+            <li onClick={() => setSelectedItem('login')}>
               <LogIn />
               Login
             </li>
@@ -147,25 +146,25 @@ const Home = () => {
         <div className="header">
           <h1>Hello, Gustavo</h1>
         </div>
-        
-        {selectedItem === "register" && (
+
+        {selectedItem === 'register' && (
           <Register onSuccessRegister={handleRegisterSuccess} />
         )}
-        {selectedItem === "login" && (
+        {selectedItem === 'login' && (
           <Login onSuccessLogin={handleLoginSuccess} />
         )}
-        {selectedItem === "accounts" && <Accounts />}
-        {selectedItem === "withdraw" && <Withdraw />}
-        {selectedItem === "customersList" && <CustomersList />}
-        {selectedItem === "useModal" && (
+        {selectedItem === 'accounts' && <Accounts />}
+        {selectedItem === 'withdraw' && <Withdraw />}
+        {selectedItem === 'customersList' && <CustomersList />}
+        {selectedItem === 'useModal' && (
           <Modal
             isVisible={isModalVisible}
             toggleVisibility={toggleModalVisibility}
             modalContent={modalContent}
           />
         )}
-        {selectedItem === "ToDoList" && <ToDoList />}
-        {selectedItem === "MyCalendar" && <MyCalendar/>}
+        {selectedItem === 'ToDoList' && <ToDoList />}
+        {selectedItem === 'MyCalendar' && <MyCalendar />}
       </div>
     </div>
   );
