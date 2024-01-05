@@ -24,7 +24,6 @@ const Home = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [cookie, setCookie] = useState<string | null>(null);
- 
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
@@ -50,7 +49,7 @@ const Home = () => {
 
   // test modal
   const { isModalVisible, toggleModalVisibility } = useModal();
-  
+
   const modalContent: React.ReactNode = (
     // modal content
     <div>
