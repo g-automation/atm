@@ -1,11 +1,14 @@
 .Register-container,
-.Login-container {
+.Login-container,
+.Edit-container,
+.Customers-container {
   font-family: "Courier New", Courier, monospace;
   margin: 2rem 1.5rem;
 }
 
 .register-form,
-.login-form {
+.login-form,
+.edit-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +16,8 @@
 }
 
 .register-fieldset,
-.login-fieldset {
+.login-fieldset,
+.edit-fieldset {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,19 +33,26 @@ span {
   text-align: center;
 }
 
+h3 {
+  margin-top: 36px;
+}
+
 .register-div,
-.login-div {
+.login-div,
+.edit-div {
   width: 80%;
   padding: 0 0.4rem;
 }
 
 .register-label,
-.login-label {
+.login-label,
+.edit-label {
   font-size: 14px;
 }
 
 .register-input,
-.login-input {
+.login-input,
+.edit-input {
   margin: 0.5rem 0;
   padding: 1rem;
   width: 100%;
@@ -51,7 +62,8 @@ span {
 }
 
 .register-button,
-.login-button {
+.login-button,
+.edit-button {
   text-align: center;
   flex: 1;
   width: 94%;
@@ -72,9 +84,92 @@ span {
   }
 }
 
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  margin: 0 0 0 24px;
+}
+
+.search-div {
+  display: flex;
+  align-items: center;
+  border: 2px solid #777777;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-button,
+.search-all-button {
+  background-color: #4647fd;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #777777;
+  }
+}
+
+.search-all-button {
+  margin-left: 24px;
+}
+
+section {
+  margin: 16px 0px 16px 24px;
+}
+
+.close-section-button {
+  position: fixed;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #777777;
+}
+
+.list-one,
+.list-all {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 0 10px #00000029;
+
+  color: #222222;
+  font-size: 16px;
+}
+
+.list-one ul,
+.list-all ul {
+  list-style: none;
+  padding: 0;
+}
+
+.list-one ol,
+.list-all ol {
+  list-style: none;
+}
+
 .message {
   display: block;
   color: #ff4040;
   text-align: center;
   font-weight: bold;
+}
+
+.error {
+  color: #e54922;
 }
