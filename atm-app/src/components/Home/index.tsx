@@ -3,6 +3,7 @@ import './styles.css';
 
 import React, { useState } from 'react';
 import {
+  AlignLeft,
   DollarSign,
   List,
   LogIn,
@@ -18,6 +19,8 @@ import CustomersList from '../Customers/List';
 import Login from '../Customers/LoginForm';
 import Register from '../Customers/RegisterForm';
 import { Modal } from '../Modals/Modal';
+import MyCalendar from '../MyCalendar/MyCalendar';
+import ToDoList from '../ToDoList';
 import Withdraw from '../Withdraw';
 
 const Home = () => {
@@ -108,6 +111,14 @@ const Home = () => {
               <LogOut />
               Logout
             </li>
+            <li onClick={() => setSelectedItem('ToDoList')}>
+              <AlignLeft />
+              ToDoList
+            </li>
+            <li onClick={() => setSelectedItem('MyCalendar')}>
+              <AlignLeft />
+              Calendar
+            </li>
             <li
               onClick={() => {
                 setSelectedItem('useModal');
@@ -153,6 +164,8 @@ const Home = () => {
             modalContent={modalContent}
           />
         )}
+        {selectedItem === 'ToDoList' && <ToDoList />}
+        {selectedItem === 'MyCalendar' && <MyCalendar />}
       </div>
     </div>
   );

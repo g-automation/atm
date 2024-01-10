@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Delete, Edit } from 'react-feather';
 import { useModal } from '../../hooks/useModal'; // reusable modal
 import {
-    deleteCustomer,
-    getAllCustomers,
-    getCustomer,
-    updateCustomer,
+  deleteCustomer,
+  getAllCustomers,
+  getCustomer,
+  updateCustomer,
 } from '../../services/customer';
 import { Modal } from '../Modals/Modal'; // reusable modal
 import './styles.css';
