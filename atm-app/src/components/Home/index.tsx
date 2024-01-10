@@ -1,5 +1,5 @@
-import './styles.css';
 import atmlogo from '../../Assets/atm-clipart-2018-20 (2).png';
+import './styles.css';
 
 import React, { useState } from 'react';
 import {
@@ -33,7 +33,7 @@ const Home = () => {
 
   const handleRegisterSuccess = async () => {
     setIsRegistered(true);
-    setSelectedItem('/');
+    setSelectedItem('login');
   };
 
   const handleLogout = async () => {
@@ -41,6 +41,7 @@ const Home = () => {
       await logout();
       setCookie(null);
       setIsLogged(false); //logged out
+      setSelectedItem('login');
       console.log('Logout successful:', cookie);
     } catch (error) {
       console.error('Logout failed:', error);
