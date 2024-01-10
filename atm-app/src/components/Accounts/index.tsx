@@ -78,9 +78,6 @@ const Accounts: React.FC = () => {
 
   return (
     <div className="Accounts-container">
-      <button className="button" onClick={handleCreateAccount}>
-        Create Account
-      </button>
       {error && <p className="error">Error: {error}</p>}
 
       {accounts.length > 0 && (
@@ -89,7 +86,7 @@ const Accounts: React.FC = () => {
           <ul>
             {accounts.length > 0 &&
               accounts.map(({ accountNumber, balance }) => (
-                <li key={accountNumber}>
+                <li className="account-list" key={accountNumber}>
                   <p>
                     Account Number: {accountNumber}
                     <button
@@ -125,15 +122,20 @@ const Accounts: React.FC = () => {
           </ul>
         </div>
       )}
-      <button
-        className="button-delete-all"
-        onClick={handleDeleteAllAccounts}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >
-        {onMouseOverButton && <AlertCircle />}
-        Delete all Accounts
-      </button>
+      <div className="div-buttons">
+        <button className="button-create" onClick={handleCreateAccount}>
+          Create Account
+        </button>
+        <button
+          className="button-delete-all"
+          onClick={handleDeleteAllAccounts}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        >
+          {onMouseOverButton && <AlertCircle />}
+          Delete all Accounts
+        </button>
+      </div>
     </div>
   );
 };

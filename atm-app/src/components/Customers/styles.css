@@ -11,8 +11,7 @@
 .edit-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: -5px;
+
 }
 
 .register-fieldset,
@@ -20,16 +19,24 @@
 .edit-fieldset {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  background-color: #ffffff;
+  color: #3233fd;
   width: 85%;
-  margin: 0 1.5rem;
-  border: 1px solid #eaecef;
+  border: 1px solid #3233fd;
   border-radius: 25px;
   box-shadow: 0px 5px 3px #00000029;
+
+  &:hover {
+    background-color: #3233fd;
+    color: #ffffff;
+    border: 1px solid #01010a;
+    font-weight: bold;
+  }
 }
 
 h2,
-span {
+span,
+h3 {
   text-align: center;
 }
 
@@ -74,7 +81,7 @@ h3 {
   border: none;
   border-radius: 35px;
   padding: 1rem 1.5rem;
-  margin: 2rem 1.5rem;
+  margin: 2rem 0;
 
   &:hover {
     background-color: #ffffff;

@@ -1,3 +1,4 @@
+import atmlogo from '../../Assets/atm-clipart-2018-20 (2).png';
 import './styles.css';
 
 import React, { useState } from 'react';
@@ -133,7 +134,8 @@ const Home = () => {
 
       <div className="main">
         <div className="header">
-          <h1>Hello {}</h1>
+          <img className="img-logo" src={atmlogo} alt="logo-ATM" />
+          <h1>ATM BANK</h1>
         </div>
         {selectedItem === 'register' && (
           <Register onSuccessRegister={handleRegisterSuccess} />
