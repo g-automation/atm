@@ -1,7 +1,9 @@
+import atmlogo from '../../Assets/atm-clipart-2018-20 (2).png';
 import './styles.css';
 
 import React, { useState } from 'react';
 import {
+  AlignLeft,
   DollarSign,
   List,
   LogIn,
@@ -9,7 +11,6 @@ import {
   Maximize2,
   User,
   Users,
-  AlignLeft,
 } from 'react-feather';
 import { useModal } from '../../hooks/useModal';
 import { logout } from '../../services/customer';
@@ -18,9 +19,9 @@ import CustomersList from '../Customers/List';
 import Login from '../Customers/LoginForm';
 import Register from '../Customers/RegisterForm';
 import { Modal } from '../Modals/Modal';
-import Withdraw from '../Withdraw';
-import ToDoList from '../ToDoList';
 import MyCalendar from '../MyCalendar/MyCalendar';
+import ToDoList from '../ToDoList';
+import Withdraw from '../Withdraw';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState('home');
@@ -35,7 +36,7 @@ const Home = () => {
 
   const handleRegisterSuccess = async () => {
     setIsRegistered(true);
-    setSelectedItem('/');
+    setSelectedItem('login');
   };
 
   const handleLogout = async () => {
@@ -144,9 +145,9 @@ const Home = () => {
 
       <div className="main">
         <div className="header">
-          <h1>Hello, Gustavo</h1>
+          <img className="img-logo" src={atmlogo} alt="logo-ATM" />
+          <h1>ATM BANK</h1>
         </div>
-
         {selectedItem === 'register' && (
           <Register onSuccessRegister={handleRegisterSuccess} />
         )}
