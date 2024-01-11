@@ -1,0 +1,47 @@
+.NavbarTop-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3233fd;
+  padding: 16px;
+  height: 35%;
+}
+
+.NavbarTop-logo {
+  color: #ffffff;
+}
+
+.NavbarTop-container b {
+  color: #ffffff;
+}
+
+.NavbarTop-container ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style-type: none;
+}
+
+.NavbarTop-container a {
+  color: #ffffff;
+  margin-right: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #05d3ac;
+  }
+}
+
+.NavbarTop-button {
+  font-size: 16px;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #05d3ac;
+  }
+}
