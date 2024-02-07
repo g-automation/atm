@@ -1,4 +1,5 @@
 import atmlogo from '../../Assets/atm-clipart-2018-20 (2).png';
+import "react-toastify/dist/ReactToastify.css";
 import './styles.css';
 
 import React, { useState } from 'react';
@@ -22,6 +23,7 @@ import { Modal } from '../Modals/Modal';
 import MyCalendar from '../MyCalendar/MyCalendar';
 import ToDoList from '../ToDoList';
 import Withdraw from '../Withdraw';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState('home');
@@ -31,6 +33,7 @@ const Home = () => {
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
+    toast.success("Success Login !");
     setSelectedItem('/');
   };
 
@@ -45,7 +48,7 @@ const Home = () => {
       setCookie(null);
       setIsLogged(false); //logged out
       setSelectedItem('login');
-      console.log('Logout successful:', cookie);
+      toast.success("Success Logout !");
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -167,6 +170,7 @@ const Home = () => {
         {selectedItem === 'ToDoList' && <ToDoList />}
         {selectedItem === 'MyCalendar' && <MyCalendar />}
       </div>
+      <ToastContainer />
     </div>
   );
 };
