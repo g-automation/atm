@@ -1,8 +1,12 @@
 .Register-container,
-.Login-container,
-.Edit-container,
-.Customers-container {
-  font-family: "Courier New", Courier, monospace;
+.Login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.List-container,
+.Edit-container {
   margin: 2rem 1.5rem;
 }
 
@@ -11,7 +15,7 @@
 .edit-form {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
 }
 
 .register-fieldset,
@@ -101,6 +105,7 @@ h3 {
 
 .search-div {
   display: flex;
+  justify-content: center;
   align-items: center;
   border: 2px solid var(--border--color);
   border-radius: 4px;
@@ -137,11 +142,12 @@ h3 {
 }
 
 section {
+  width: max-content;
+  height: auto;
   margin: 16px 0px 16px 24px;
 }
 
 .close-section-button {
-  position: fixed;
   border: none;
   font-size: 24px;
   cursor: pointer;
