@@ -23,6 +23,7 @@ import { Modal } from '../Modals/Modal';
 import MyCalendar from '../MyCalendar/MyCalendar';
 import ToDoList from '../ToDoList';
 import Withdraw from '../Withdraw';
+import NavbarTop from '../Navbar';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Home = () => {
@@ -46,7 +47,7 @@ const Home = () => {
     try {
       await logout();
       setCookie(null);
-      setIsLogged(false); //logged out
+      setIsLogged(false);
       setSelectedItem('login');
       toast.success('Success Logout !');
     } catch (error) {
@@ -54,11 +55,9 @@ const Home = () => {
     }
   };
 
-  // test modal
   const { isModalVisible, toggleModalVisibility } = useModal();
 
   const modalContent: React.ReactNode = (
-    // modal content
     <div>
       <h3>Modal Test</h3>
       <form>
@@ -147,6 +146,31 @@ const Home = () => {
       </div>
 
       <div className="main">
+        {!isLogged ? (
+          <div className="navbar">
+            <NavbarTop
+              title={'ATM'}
+              logo={'LOGO'}
+              links={[
+                { label: 'Home', url: '/' },
+                { label: 'About ATM', url: '/' },
+                { label: 'Products', url: '/' },
+                { label: 'Contact', url: '/' },
+                { label: 'Questions', url: '/' },
+              ]}
+            />
+          </div>
+        ) : (
+          <div className="navbar">
+            <NavbarTop
+              title={'ATM'}
+              logo={'LOGO'}
+              links={[]}
+              onAction={() => {}}
+              action="Other component?"
+            />
+          </div>
+        )}
         <div className="header">
           <img className="img-logo" src={atmlogo} alt="logo-ATM" />
           <h1>ATM BANK</h1>

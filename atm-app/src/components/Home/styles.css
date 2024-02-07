@@ -41,6 +41,7 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
 }
 
 .header {
@@ -65,13 +66,16 @@ svg {
   width: 4rem;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
   .Home-container {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .sidebar {
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
+  }
+
+  .main {
+    flex-direction: column;
   }
 }
