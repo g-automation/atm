@@ -45,3 +45,19 @@
     color: #05d3ac;
   }
 }
+
+@media (max-width: 768px) {
+  .NavbarTop-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .NavbarTop-logo {
+    text-align: center;
+  }
+
+  .NavbarTop-nav {
+    display: none;
+  }
+}
