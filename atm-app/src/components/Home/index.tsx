@@ -1,5 +1,5 @@
 import atmlogo from '../../Assets/atm-clipart-2018-20 (2).png';
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
 import React, { useState } from 'react';
@@ -33,7 +33,7 @@ const Home = () => {
 
   const handleLoginSuccess = async () => {
     setIsLogged(true);
-    toast.success("Success Login !");
+    toast.success('Success Login !');
     setSelectedItem('/');
   };
 
@@ -48,7 +48,7 @@ const Home = () => {
       setCookie(null);
       setIsLogged(false); //logged out
       setSelectedItem('login');
-      toast.success("Success Logout !");
+      toast.success('Success Logout !');
     } catch (error) {
       console.error('Logout failed:', error);
     }
