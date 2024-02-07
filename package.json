@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently --kill-others \"npm run --prefix atm-api start\" \"npm run --prefix atm-app start\"",
-    "format": "prettier --write \"**/*.js\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install:api": "cd atm-api && npm install",
     "install:app": "cd atm-app && npm install",
