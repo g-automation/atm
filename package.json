@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently --kill-others \"npm run --prefix atm-api start\" \"npm run --prefix atm-app start\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install:api": "cd atm-api && npm install",
     "install:app": "cd atm-app && npm install",
-    "postinstall": "run-p install:*"
+    "postinstall": "husky install && run-p install:*",
+    "prepare": "husky install",
+    "commit": "npm run install:api && npm run install:app && cd atm-app && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -19,12 +22,16 @@
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "react-big-calendar": "^1.8.5",
     "react-router-dom": "^6.20.0"
   },
   "devDependencies": {
     "@types/compression": "^1.7.5",
     "@types/cookie-parser": "^1.4.6",
     "@types/lodash": "^4.14.202",
-    "npm-run-all": "^4.1.5"
+    "husky": "^8.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "3.1.1"
   }
 }

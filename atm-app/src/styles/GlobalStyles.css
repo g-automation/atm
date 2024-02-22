@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Nunito:wght@400;700&display=swap');
+
+:root {
+  --color-primary: #FFFFFF;
+  --color-secundary: #05d3ac;
+  --color-screen: #f9fbfb;
+  --color-text: #000;
+  --color-list: #222222;
+  --backgound-color: #3233fd;
+  --border--color: #F0F0F0;
+  --box-shadow: #00000029;
+  --error-color: #E54922;
+  --button-delete: #9b111e;
+  --button-close: #555555;
+  --border-hover: #01010a;
+  --button-hover: #8c8c8c;
+  --color-sidebar-hover: #05d3ac;
+}
+
+
+* {
+  font-family: 'Inter', sans-serif;
+
+}

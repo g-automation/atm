@@ -1,45 +1,41 @@
 .Withdraw-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
+  align-items: center;
+  margin: 1rem 0.5rem;
   width: 100%;
   height: 100%;
-
-  gap: 15px;
+  gap: 1.5rem;
 }
 
 .input {
-  width: 30%;
-
-  padding: 15px;
-
-  border: 1px solid #F0F0F0;
+  padding: 1rem;
+  border: 1px solid var(--border--color);
   border-radius: 5px;
-  box-shadow: 0px 5px 3px #00000029;
+  box-shadow: 0px 5px 3px var(--box-shadow);
 }
 
-.button {
+.button-withdraw {
   display: flex;
   justify-content: center;
-  align-items: center;
-
-  width: 30%;
-
-  padding: 15px;
-  margin-left: 15px;
-
-  color: #FFFFFF;
-  background-color: #3233FD;
+  padding: 1rem;
+  margin-left: 1rem;
+  color: var(--color-primary);
+  background-color: var(--backgound-color);
   border: 0px;
   border-radius: 35px;
-
   cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--backgound-color);
+    border: 1px solid var(--backgound-color);
+    font-weight: bold;
+  }
 }
 
 .error {
-  color: #E54922;
+  color: var(--error-color);
 }
 
 @media only screen and (max-width: 1024px) {
